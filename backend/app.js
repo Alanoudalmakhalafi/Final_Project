@@ -7,7 +7,7 @@ const cors = require('cors')
 // const {requireAuth, checkUser} = require('./middleware/authMiddleware')
 
 const app = express()
-// app.use(express.json())
+
 
 app.use('/user', userRouter)
 app.use('/admin', adminRouter)

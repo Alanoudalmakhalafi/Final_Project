@@ -4,7 +4,7 @@ const User = require('../models/user')
 const userRouter = express.Router()
 
 userRouter.use(express.json())
-userRouter.use(express.urlencoded({extended: false}))
+// userRouter.use(express.urlencoded({extended: false}))
 
 userRouter.get('/user', async (req,res)=>{
     const user = await User.find()

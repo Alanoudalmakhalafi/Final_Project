@@ -1,29 +1,29 @@
-const express = require("express");
-const User = require("../models/user");
-const Parking = require("../models/parking");
-const Service = require("../models/Service");
+const express = require("express")
+const User = require("../models/user")
+const Parking = require("../models/parking")
+const Service = require("../models/Service")
 
-const adminRouter = express.Router();
+const adminRouter = express.Router()
 
-adminRouter.use(express.json());
-adminRouter.use(express.urlencoded({ extended: false }));
+adminRouter.use(express.json())
+// adminRouter.use(express.urlencoded({ extended: false }))
 
 adminRouter.get("/admin", async (req, res) => {
-  const admin = await User.find();
-  res.send(admin);
-});
+  const admin = await User.find()
+  res.send(admin)
+})
 
 adminRouter.put("/updateAdmin/:id", async (req, res) => {
   const updateAdmin = await User.findByIdAndUpdate(req.params.id, {
     $set: req.body,
-  });
-  res.send(updateAdmin);
-});
+  })
+  res.send(updateAdmin)
+})
 
 adminRouter.delete("/deleteAdmin/:id", async (req, res) => {
-  const deleteAdmin = await User.findOneAndRemove(req.params.id);
-  res.send(deleteAdmin);
-});
+  const deleteAdmin = await User.findOneAndRemove(req.params.id)
+  res.send(deleteAdmin)
+})
 
 //PARKING STUFF
 
@@ -33,27 +33,38 @@ adminRouter.post("/addParking", async (req, res) => {
     longitude: req.body.longitude,
     numberOfParking: req.body.numberOfParking,
     image: req.body.image,
-  });
-  newParking.save();
-  const parking = Parking.find();
-  res.send(parking);
-});
+  })
+  try {
+    console.log("object")
+    await newParking.save()
+    
+  } catch (error) { console.log(error) }
+
+   Parking.find({})
+   .then((parking)=>{
+     res.send(parking)
+   })
+})
 
 adminRouter.post("/addServices/:id", async (req, res) => {
-  const parkingId = await Parking.findById(req.params.id);
-  const newService = new Service({
-    nameOfservice: req.body.nameOfservice,
-    description: req.body.description,
-    image: req.body.image,
-    price: req.body.price,
-  });
-  parkingId.services.push(newService);
-  try {
-    await parkingId.save();
-    res.status(201).send(parkingId);
-  } catch (error) {
-    console.log(error);
-  }
-});
+  Parking.findById(req.params.id).then((parking)=>{
+    Service.create({
 
-module.exports = adminRouter;
+      nameOfservice: req.body.nameOfservice,
+      description: req.body.description,
+      image: req.body.image,
+      price: req.body.price,
+
+    }).then(async(newService)=>{
+      parking.services.push(newService) 
+    try {
+      await parking.save()
+      res.send(newService)
+    } catch (error) {
+      res.send(error)
+    }
+      })
+  })
+})
+
+module.exports = adminRouter

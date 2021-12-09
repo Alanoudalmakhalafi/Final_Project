@@ -15,10 +15,10 @@ const parkingSchema = new mongoose.Schema({
   image: {
     type: String,
   },
-  service: {
+  services: [{
     type: Schema.Types.ObjectId,
     ref: 'Service'
-  }
+  }]
 });
 
 const Parking = mongoose.model("Parking", parkingSchema);
