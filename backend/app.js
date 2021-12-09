@@ -2,12 +2,18 @@ const mongoose = require('mongoose')
 const express = require('express')
 const userRouter = require('./Routes/userRoute')
 const adminRouter = require('./Routes/adminRoute')
+const authRoutes = require('./Routes/authRoute')
+const cors = require('cors')
+// const {requireAuth, checkUser} = require('./middleware/authMiddleware')
 
 const app = express()
+// app.use(express.json())
 
 app.use('/user', userRouter)
 app.use('/admin', adminRouter)
-
+app.use(cors())
+app.use(authRoutes)
+// app.get('*',checkUser)
 
 const uri = 'mongodb+srv://alanoud:1418@cluster0.anylu.mongodb.net/parkingSite?retryWrites=true&w=majority';
 mongoose.connect(uri, {
