@@ -2,7 +2,7 @@ const express = require("express");
 const User = require("../models/user");
 const Parking = require("../models/parking");
 const booking = require("../models/booking");
-const moment = require('moment-timezone');
+const moment = require('moment-timezone')
 
 const userRouter = express.Router();
 
