@@ -2,6 +2,7 @@ const express = require("express");
 const User = require("../models/user");
 const Parking = require("../models/parking");
 const booking = require("../models/booking");
+const moment = require('moment-timezone');
 
 const userRouter = express.Router();
 
@@ -43,6 +44,40 @@ userRouter.post("/userListOfParking", async (req,res)=>{
          res.send(e)
      }
     
+})
+
+userRouter.put("/checkOut", async (req, res) => {
+   
+    await booking.findByIdAndUpdate( { _id: req.body.bookingId} , {
+        endTime: moment().utcOffset(0, true).format(),
+      }).then(async (updatedEndTime)=>{
+
+           await updatedEndTime.save().then(async (savedEndTime)=>{
+             console.log(savedEndTime)
+
+             const parking = await Parking.findById(savedEndTime.parking)
+         
+             let end = savedEndTime.endTime.getUTCHours()
+             let start = savedEndTime.startTime.getUTCHours()
+             console.log("end "+end)
+             console.log("start "+start)
+         
+             let timeSlot = (parseInt(end) - parseInt(start)) + 1
+             console.log(timeSlot)
+         
+             const total = parking.price * timeSlot
+             console.log(total)
+         
+              await booking.findByIdAndUpdate(req.body.bookingId, {
+                 totalPrice: total,
+
+               }).then(async (UpdatedPrice)=>{
+                 await UpdatedPrice.save().then((savedPrice)=>{
+                    res.send(savedPrice)
+                })
+               })
+          })
+      })
 })
 
 userRouter.post("/bookingParking", (req, res) => {

@@ -15,6 +15,9 @@ const parkingSchema = new mongoose.Schema({
   image: {
     type: String,
   },
+  price:{
+    type:Number,
+  },
   services: [{
     type: Schema.Types.ObjectId,
     ref: 'Service'

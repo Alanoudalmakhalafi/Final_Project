@@ -33,6 +33,7 @@ adminRouter.post("/addParking", async (req, res) => {
     longitude: req.body.longitude,
     numberOfParking: req.body.numberOfParking,
     image: req.body.image,
+    price: req.body.price,
   })
   try {
     console.log("object")

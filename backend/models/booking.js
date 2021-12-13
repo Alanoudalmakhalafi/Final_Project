@@ -23,7 +23,7 @@ const bookingSchema = new mongoose.Schema({
         type:Date,
         
     },
-    price:{
+    totalPrice:{
         type:Number,
     },
     date:{
