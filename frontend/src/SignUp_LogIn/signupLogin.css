@@ -1,0 +1,29 @@
+.registerform{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    background-color: rgb(223, 219, 219);
+    margin: 0%;
+    padding: 10%;
+    
+}
+
+input{
+    width: 300px;
+    height: 40px;
+    margin: 5px;
+    border:none;
+    border-radius: 3px;
+}
+
+button{
+     border:none;
+    width: 100px;
+    margin-left: 100px;
+    height: 30px;
+    border-radius: 2px;
+}
+
+/* .signupform{
+   
+} */
