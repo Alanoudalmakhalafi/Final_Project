@@ -7,7 +7,7 @@ export default function NavBar() {
     <div>
       <Navbar bg="light">
         <Container>
-          <Navbar.Brand href="#home">
+          <Navbar.Brand href="/">
             <img
               src={img}
               width="40"
