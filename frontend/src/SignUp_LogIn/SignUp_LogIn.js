@@ -71,6 +71,7 @@ export default function SignUp_LogIn() {
                 <div class="password error"></div>
                 <button className="button-8" onClick={(e) => signup(e)}>Signup</button>
                 </div>
+                <div class="vl"></div>
             {/* LOGIN */}
                 <div className='loginform'>
                 <input 
