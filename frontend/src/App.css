@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+
+.clinic-map-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  /* height: 100vh; */
+}

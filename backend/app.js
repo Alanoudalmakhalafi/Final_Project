@@ -8,10 +8,9 @@ const cors = require('cors')
 
 const app = express()
 
-
+app.use(cors())
 app.use('/user', userRouter)
 app.use('/admin', adminRouter)
-app.use(cors())
 app.use(authRoutes)
 // app.get('*',checkUser)
 
