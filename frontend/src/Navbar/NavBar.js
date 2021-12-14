@@ -1,7 +1,6 @@
 import React from "react";
-import img from "./parkingYards.png"
-import { Navbar, Container, Nav} from 'react-bootstrap';
-
+import img from "./parkingYards.png";
+import { Navbar, Container, Nav } from "react-bootstrap";
 
 export default function NavBar() {
   return (
@@ -16,10 +15,11 @@ export default function NavBar() {
               className="d-inline-block align-top"
               alt="React Bootstrap logo"
             />
-
           </Navbar.Brand>
-          <Nav><Nav.Link href="/Signup&Login">SignUp/LogIn</Nav.Link></Nav>
-          
+          <Nav>
+            <Nav.Link href="/Signup&Login">SignUp/LogIn</Nav.Link>
+            <Nav.Link href="/AdminProfile">Profile</Nav.Link>
+          </Nav>
         </Container>
       </Navbar>
     </div>

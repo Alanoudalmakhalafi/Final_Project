@@ -1,0 +1,20 @@
+
+.pro-sidebar > .pro-sidebar-inner{
+    
+    background-color: #f3f4f5;
+    
+}
+
+.pro-sidebar .pro-menu.shaped .pro-menu-item > .pro-inner-item > .pro-icon-wrapper{
+    background-color: rgb(88, 88, 88);
+    border-radius: 50px;
+}
+
+.sidebar{
+    margin: 5%;
+}
+
+.pro-sidebar .pro-menu > ul > .pro-sub-menu > .pro-inner-list-item{
+    background-color: rgb(88, 88, 88);
+    
+}
