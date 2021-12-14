@@ -54,9 +54,14 @@ export default function SignUp_LogIn() {
 
     return (
         <div>
+        <div className='registerText'>
+        <h2>SIGN UP FOR <span>PARKING YARDS</span></h2>
+            <h1>AND EARN REWARDS FOR EACH RESERVATION!</h1></div>
             <form className='registerform'>
+            
             {/* SIGNUP */}
                  <div className='signupform'>
+
                 <input 
                 onChange={(e)=>{setEmail(e.target.value)}} 
                 type="text" 

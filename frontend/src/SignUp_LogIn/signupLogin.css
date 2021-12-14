@@ -44,3 +44,13 @@ button{
 .loginform{
     border:black solid 5px;
  } */
+
+ .registerText{
+     text-align: center;
+     margin-top: 35px;
+     color:gray;
+ }
+
+ span{
+     color:#fabf52;
+ }
