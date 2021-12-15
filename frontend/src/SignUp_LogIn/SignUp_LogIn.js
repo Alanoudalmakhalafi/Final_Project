@@ -6,6 +6,7 @@ import {useNavigate} from 'react-router-dom'
 import './signupLogin.css'
 
 export default function SignUp_LogIn() {
+    
     const [Email, setEmail] = useState()
     const [Password, setPassword] = useState()
     let navigate = useNavigate()
