@@ -12,10 +12,9 @@ const parkingSchema = new mongoose.Schema({
   numberOfParking: {
     type: Number,
   },
-  image:  {
-    data: Buffer,
-    contentType: String
-},
+  image: {
+    type: String,
+  },
   price:{
     type:Number,
   },
