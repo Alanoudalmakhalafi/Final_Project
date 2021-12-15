@@ -26,7 +26,7 @@ userRouter.delete("/deleteUser/:id", async (req, res) => {
 });
 
 userRouter.get("/allParking", async (req, res) => {
-    const parkings = await Parking.find()
+    const parkings = await Parking.find().populate('services')//
     res.send(parkings)
   })
 
