@@ -4,7 +4,7 @@ import axios from "axios"
 export default function AddParking() {
   const [NewParking, setNewParking] = useState()
   const [Loding, setLoding] = useState(true)
-  const [SelsctedFile, setSelsctedFile] = useState()
+
 //hooks for inputs
   const latitude = useRef(null)
   const longitude = useRef(null)
@@ -37,13 +37,7 @@ export default function AddParking() {
           // setNewParking(res)
         },(err) => {console.log(err) })}
 
-//uploding img from computer
-const fileSelectHandler = (event) => {
-  setSelsctedFile(event.target.files[0])
-}
-const fileUploadHandler = () =>{
-  axios.post('')
-}
+
 
 //loding
   if (Loding) {return <p>Loding</p>}
