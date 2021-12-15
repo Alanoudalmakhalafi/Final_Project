@@ -3,6 +3,8 @@ import ReactMapGL, { Marker } from "react-map-gl";
 import { GrLocationPin } from "react-icons/gr";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import HomeSidebar from "./HomeSidebar";
+import './home.css'
 
 export default function Home() {
   const [parkingLocation, setParkingLocation] = useState([]);
@@ -23,6 +25,7 @@ export default function Home() {
 
   return (
     <div>
+    <HomeSidebar/>
       <div className="clinic-map-container">
         <ReactMapGL
           {...viewport}

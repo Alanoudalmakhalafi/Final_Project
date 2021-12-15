@@ -61,12 +61,11 @@ export default function AddParking() {
         <input ref={latitude} placeholder="latitude" required />
         <input ref={longitude} placeholder="longitude" required />
         <input ref={num} placeholder="number of parking" required />
-        <input type="file" onChange={fileSelectHandler} ref={img} placeholder="image" required />
-        <button onClick={fileUploadHandler}>Upload</button>
+        <input type="file" ref={img} placeholder="image" required />
         <input ref={price} placeholder="parking price" required />
         <input ref={services} placeholder="services" />
 
-        <button onClick={handleClickEvent}>Get value</button>
+        <button>Get value</button>
       </div>
     </>
   )
