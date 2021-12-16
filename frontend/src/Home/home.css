@@ -1,3 +1,18 @@
 .searchBar{
     width: 200px;
+    box-shadow: none;
+}
+
+.clinic-map-container{
+    position: relative;
+
+}
+
+.homeSidebar{
+    position: absolute;
+}
+
+.pro-sidebar{
+    width: 300px;
+    margin: 10px;
 }

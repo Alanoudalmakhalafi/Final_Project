@@ -9,6 +9,9 @@ const parkingSchema = new mongoose.Schema({
   longitude: {
     type: Number,
   },
+  StreetName:{
+    type: String
+  },
   numberOfParking: {
     type: Number,
   },
