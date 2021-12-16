@@ -15,4 +15,5 @@
 .pro-sidebar{
     width: 300px;
     margin: 10px;
+    min-height: 200%;
 }

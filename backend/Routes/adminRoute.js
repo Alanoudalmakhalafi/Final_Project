@@ -31,6 +31,7 @@ adminRouter.post("/addParking", async (req, res) => {
   const newParking = new Parking({
     latitude: req.body.latitude,
     longitude: req.body.longitude,
+    StreetName: req.body.StreetName,
     numberOfParking: req.body.numberOfParking,
     image: req.body.image,
     price: req.body.price,

@@ -8,6 +8,7 @@ export default function AddParking() {
 //hooks for inputs
   const latitude = useRef(null)
   const longitude = useRef(null)
+  const StreetName = useRef(null)
   const num = useRef(null)
   const img = useRef(null)
   const price = useRef(null)
@@ -28,6 +29,7 @@ export default function AddParking() {
     axios.post(" http://localhost:3001/admin/addParking", {
         latitude: latitude.current.value,
         longitude: longitude.current.value,
+        StreetName: StreetName.current.value,
         numberOfParking: num.current.value,
         image: img.current.value,
         price: price.current.value,
@@ -50,22 +52,24 @@ export default function AddParking() {
           return (
             <div className="parkingsCard">
               <img src={get.image} height="200px" width="200px" />
-              <ul><li></li></ul>
-              <p>{get.numberOfParking}</p>
-              <p>{get.price}</p>
+              <p>{get.StreetName}</p>
+              <p>number Of Parking: {get.numberOfParking}</p>
+              <p>price: {get.price}</p>
             </div>
           )
         })}
       </div>
       <div className="inputBox">
+
+      <input ref={StreetName} placeholder="Street, City" required />
         <input ref={latitude} placeholder="latitude" required />
         <input ref={longitude} placeholder="longitude" required />
         <input ref={num} placeholder="number of parking" required />
-        <input type="file" ref={img} placeholder="image" required />
+        <input type="file" ref={img} placeholder="image"  />
         <input ref={price} placeholder="parking price" required />
         <input ref={services} placeholder="services" />
 
-        <button>Get value</button>
+        <button onClick={handleClickEvent}>Post</button>
       </div>
     </>
   )
