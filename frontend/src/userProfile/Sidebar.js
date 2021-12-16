@@ -1,7 +1,7 @@
 import React from "react";
 import { ProSidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
-import { FaHeart } from "react-icons/fa";
-import { FaGem } from "react-icons/fa";
+import { RiAdminFill } from "react-icons/ri";
+import { Link } from "react-router-dom";
 import "react-pro-sidebar/dist/css/styles.css";
 import "./sidebar.css"
 
@@ -10,11 +10,12 @@ export default function Sidebar() {
     <div className="sidebar">
       <ProSidebar>
         <Menu iconShape="square">
-          <MenuItem icon={<FaGem />}>Dashboard</MenuItem>
-          <SubMenu title="Components" icon={<FaHeart />}>
-            <MenuItem>Component 1</MenuItem>
-            <MenuItem>Component 2</MenuItem>
-          </SubMenu>
+          <MenuItem icon={<RiAdminFill />}>profile</MenuItem>
+          
+            <MenuItem>all parking</MenuItem>
+            <MenuItem><Link to="/AddNewParking">Add New Parking</Link></MenuItem>
+            <MenuItem>Add New services</MenuItem>
+           
         </Menu>
       </ProSidebar>
     </div>

@@ -1,6 +1,9 @@
 import React from "react";
 import img from "./parkingYards.png";
 import { Navbar, Container, Nav } from "react-bootstrap";
+import { RiAdminFill } from "react-icons/ri";
+import { BiLogInCircle } from "react-icons/bi";
+
 
 export default function NavBar() {
   return (
@@ -17,8 +20,8 @@ export default function NavBar() {
             />
           </Navbar.Brand>
           <Nav>
-            <Nav.Link href="/Signup&Login">SignUp/LogIn</Nav.Link>
-            <Nav.Link href="/AdminProfile">Profile</Nav.Link>
+            <Nav.Link href="/Signup&Login">Login <BiLogInCircle/></Nav.Link>
+            <Nav.Link href="/AdminProfile"><RiAdminFill /></Nav.Link>
           </Nav>
         </Container>
       </Navbar>

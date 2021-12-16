@@ -30,7 +30,7 @@ export default function HomeSidebar() {
           <MenuItem>
             <input className="searchBar" placeholder="Search" />
           </MenuItem>
-          <SubMenu>
+          <MenuItem>
             <Calendar
               onChange={onChange}
               value={value}
@@ -41,7 +41,7 @@ export default function HomeSidebar() {
               <span className="bold">Selected Date:</span>{" "}
               {value.toDateString()}
             </p>
-          </SubMenu>
+          </MenuItem>
 
           {parkings.map((p) => {
             return (
