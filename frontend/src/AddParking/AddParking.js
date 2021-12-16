@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from "react"
 import axios from "axios"
+import Sidebar from '../userProfile/Sidebar'
 
 export default function AddParking() {
   const [NewParking, setNewParking] = useState()
@@ -47,6 +48,7 @@ export default function AddParking() {
 
   return (
     <>
+        <Sidebar/>
       <div className="listOfParkingBox">
         {NewParking.map((get) => {
           return (

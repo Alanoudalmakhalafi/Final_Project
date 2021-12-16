@@ -1,24 +1,25 @@
-import './App.css';
-import NavBar from './Navbar/NavBar';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import {Routes,Route} from "react-router-dom";
-import Home from './Home/Home';
-import SignUp_LogIn from './SignUp_LogIn/SignUp_LogIn';
-import Admin from './userProfile/Admin';
-import AddParking from './AddParking/AddParking';
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Routes, Route } from "react-router-dom";
+import NavBar from "./Navbar/NavBar";
+import Home from "./Home/Home";
+import SignUp_LogIn from "./SignUp_LogIn/SignUp_LogIn";
+import Admin from "./userProfile/Admin";
+import AddParking from "./AddParking/AddParking";
+import AllParking from "./AllParking/AllParking"
 
 function App() {
   return (
     <div>
-    <NavBar/>
-    <Routes>
-    <Route exact path='/' exact element={<Home />} />
-    <Route path='/Signup&Login' element={<SignUp_LogIn />} />
-    <Route exact path='/AdminProfile' exact element={<Admin />} />
-    <Route exact path='/AddNewParking' exact element={<AddParking />} />
+      <NavBar />
 
-    </Routes>
-
+      <Routes>
+        <Route exact path="/" exact element={<Home />} />
+        <Route path="/Signup&Login" element={<SignUp_LogIn />} />
+        <Route path="/AdminProfile" element={<Admin />} />
+        <Route path="/AddNewParking" element={<AddParking />} />
+        <Route path="/AllParking" element={<AllParking />} />
+      </Routes>
     </div>
   );
 }
