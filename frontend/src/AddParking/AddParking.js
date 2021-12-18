@@ -8,7 +8,7 @@ import { AiOutlineEdit } from "react-icons/ai";
 
 
 export default function AddParking() {
-  const [NewParking, setNewParking] = useState();
+  const [NewParking, setNewParking] = useState([]);
   const [Loding, setLoding] = useState(true);
 
   //hooks for inputs
@@ -45,17 +45,42 @@ export default function AddParking() {
       .then(
         (res) => {
           console.log(res);
-          // setNewParking(res)
+          setNewParking(res.data)
         },
         (err) => {
           console.log(err);
         }
-      );
+      )
   }
 
   //update Parking
-  const updateParking = () => {
+  const updateParking = (id) => {
+    axios.put(`http://localhost:3001/admin/updateParking/${id}`, {
+      latitude: latitude.current.value,
+      longitude: longitude.current.value,
+      StreetName: StreetName.current.value,
+      numberOfParking: num.current.value,
+      image: img.current.value,
+      price: price.current.value,
+      services: services.current.value,
+    })
+    .then(
+      (res) => {
+        console.log(res);
+      },
+      (err) => {
+        console.log(err);
+      }
+    )
+  }
 
+  //delete Parking
+  const deleteParking = (id) => {
+    axios.delete(` http://localhost:3001/admin/deleteParking/${id}`)
+    .then((res)=>{
+      console.log(res.data)
+      setNewParking()
+    })
   }
 
   //loding
@@ -83,8 +108,8 @@ export default function AddParking() {
                   <td>{get.numberOfParking}</td>
                   <td>{get.price}</td>
                   <td>
-                  <button className="rowsBtn" onClick={updateParking()}><AiOutlineEdit/></button>
-                  <button className="rowsBtn" onClick={deleteParking()}><RiDeleteBin6Fill/></button>
+                  <button className="rowsBtn" onClick={()=>{updateParking(get._id)}}><AiOutlineEdit/></button>
+                  <button className="rowsBtn" onClick={()=>{deleteParking(get._id)}}><RiDeleteBin6Fill/></button>
                   </td>
                 </tr>
             </>
@@ -92,7 +117,7 @@ export default function AddParking() {
         })}
               </table>
       </div>
-      {/* <div className="inputBox">
+      <div className="inputBox">
         <input ref={StreetName} placeholder="Street, City" required />
         <input ref={latitude} placeholder="latitude" required />
         <input ref={longitude} placeholder="longitude" required />
@@ -102,7 +127,7 @@ export default function AddParking() {
         <input ref={services} placeholder="services" />
 
         <button onClick={handleClickEvent}>Post</button>
-      </div> */}
+      </div>
     </div>
   );
 }

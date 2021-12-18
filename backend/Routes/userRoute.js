@@ -21,7 +21,7 @@ userRouter.put("/updateUser/:id", async (req, res) => {
   res.send(updateUser);
 });
 userRouter.delete("/deleteUser/:id", async (req, res) => {
-  const deleteUser = await User.findOneAndRemove(req.params.id);
+  const deleteUser = await User.findByAndRemove(req.params.id);
   res.send(deleteUser);
 });
 
