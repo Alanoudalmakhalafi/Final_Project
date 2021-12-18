@@ -15,12 +15,16 @@ tr:hover {
   display: flex;
   flex-direction: column;
 }
-/* .addingPage {
+.addingPage {
   display: grid;
-  grid-template-columns: 0.5fr 2fr;
   grid-template-rows: 1fr 1fr;
-} */
+}
 
 .rowsBtn{
     background:  none;
+}
+
+.test{
+    display: flex;
+    flex-wrap: wrap;
 }

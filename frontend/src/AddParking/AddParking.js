@@ -90,6 +90,7 @@ export default function AddParking() {
 
   return (
     <div className="addingPage">
+    <div className="test">
       <Sidebar />
       <div className="listOfParkingBox">
               <table>
@@ -116,6 +117,7 @@ export default function AddParking() {
           );
         })}
               </table>
+      </div>
       </div>
       <div className="inputBox">
         <input ref={StreetName} placeholder="Street, City" required />
