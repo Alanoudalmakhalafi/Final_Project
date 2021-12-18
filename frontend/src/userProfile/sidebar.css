@@ -2,6 +2,7 @@
 .pro-sidebar > .pro-sidebar-inner{
     
     background-color: #f3f4f5;
+    width: 300px;
     
 }
 
@@ -10,8 +11,13 @@
     border-radius: 50px;
 }
 
+.pro-sidebar > .pro-sidebar-inner > .pro-sidebar-layout {
+    width: auto;
+}
+
 .sidebar{
-    margin: 5%;
+    margin: 2%;
+   
 }
 
 .pro-sidebar .pro-menu > ul > .pro-sub-menu > .pro-inner-list-item{

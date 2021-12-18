@@ -1,0 +1,26 @@
+tr {
+  border-bottom: 1px solid rgb(31, 29, 29);
+}
+
+table {
+    margin-top: 2%;
+    table-layout: fixed;
+    width: 800px;
+}
+tr:hover {
+  background-color: rgb(201, 199, 199);
+  color: white;
+}
+.inputBox {
+  display: flex;
+  flex-direction: column;
+}
+.addingPage {
+  display: grid;
+  grid-template-columns: 0.5fr 2fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.rowsBtn{
+    background:  none;
+}
