@@ -7,10 +7,10 @@ table {
     table-layout: fixed;
     width: 800px;
 }
-tr:hover {
+/* tr:hover {
   background-color: rgb(201, 199, 199);
   color: white;
-}
+} */
 .inputBox {
   display: flex;
   flex-direction: column;
@@ -29,3 +29,7 @@ tr:hover {
     flex-wrap: wrap;
 }
 
+.editInput{
+  display: flex;
+  flex-direction: row;
+}

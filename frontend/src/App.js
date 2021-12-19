@@ -6,7 +6,6 @@ import Home from "./Home/Home";
 import SignUp_LogIn from "./SignUp_LogIn/SignUp_LogIn";
 import Admin from "./userProfile/Admin";
 import AddParking from "./AddParking/AddParking";
-import AllParking from "./AllParking/AllParking"
 import * as Bootstrap from 'react-bootstrap';
 
 function App() {
@@ -18,7 +17,6 @@ function App() {
         <Route path="/Signup&Login" element={<SignUp_LogIn />} />
         <Route path="/AdminProfile" element={<Admin />} />
         <Route path="/AddNewParking" element={<AddParking />} />
-        <Route path="/AllParking" element={<AllParking />} />
       </Routes>
     </div>
   );

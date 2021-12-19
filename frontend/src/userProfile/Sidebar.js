@@ -13,9 +13,7 @@ export default function Sidebar() {
           <MenuItem icon={<RiAdminFill />}>
             <Link to="/AdminProfile">Email</Link>
           </MenuItem>
-          <MenuItem>
-            <Link to="/AllParking">all parking</Link>
-          </MenuItem>
+         
           <MenuItem>
             <Link to="/AddNewParking">Add New Parking</Link>
           </MenuItem>
