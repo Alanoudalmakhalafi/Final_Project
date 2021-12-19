@@ -17,7 +17,7 @@ tr:hover {
 }
 .addingPage {
   display: grid;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
 }
 
 .rowsBtn{
@@ -28,3 +28,4 @@ tr:hover {
     display: flex;
     flex-wrap: wrap;
 }
+

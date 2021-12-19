@@ -4,12 +4,17 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
+import { ModalProvider } from "react-modal-hook";
+
 
 ReactDOM.render(
   <React.StrictMode>
  
   <BrowserRouter> 
+  <ModalProvider>
     <App />
+  </ModalProvider>
+    
     </BrowserRouter>
     
   </React.StrictMode>,

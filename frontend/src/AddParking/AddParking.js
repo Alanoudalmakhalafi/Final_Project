@@ -4,8 +4,7 @@ import Sidebar from "../userProfile/Sidebar";
 import "./AddParking.css";
 import { RiDeleteBin6Fill } from "react-icons/ri";
 import { AiOutlineEdit } from "react-icons/ai";
-import { GrFormAdd } from "react-icons/gr";
-import CustomizedDialogs from './dialog'
+import CustomizedDialogs from "./dialog";
 
 export default function AddParking() {
   const [NewParking, setNewParking] = useState([]);
@@ -81,7 +80,7 @@ export default function AddParking() {
       .delete(` http://localhost:3001/admin/deleteParking/${id}`)
       .then((res) => {
         console.log(res.data);
-        setNewParking();
+        setNewParking(res.data);
       });
   };
 
@@ -102,10 +101,22 @@ export default function AddParking() {
               <th>Price Of Parking</th>
               <button
                 className="rowsBtn"
-                data-toggle="modal"
-                data-target="#myModal"
               >
-                <GrFormAdd />
+                
+                  <CustomizedDialogs>
+                    <div className="inputBox">
+                      <input ref={StreetName} placeholder="Street, City" required/>
+                      <input ref={latitude} placeholder="latitude" required />
+                      <input ref={longitude} placeholder="longitude" required />
+                      <input ref={num} placeholder="number of parking" required />
+                      <input type="file" ref={img} placeholder="image" />
+                      <input ref={price} placeholder="parking price" required />
+                      <input ref={services} placeholder="services" />
+
+                      <button onClick={handleClickEvent}>Post</button>
+                    </div>
+                  </CustomizedDialogs>
+                
               </button>
             </tr>
 
@@ -141,20 +152,6 @@ export default function AddParking() {
           </table>
         </div>
       </div>
-      <CustomizedDialogs>
-          <div className="inputBox">
-            <input ref={StreetName} placeholder="Street, City" required />
-            <input ref={latitude} placeholder="latitude" required />
-            <input ref={longitude} placeholder="longitude" required />
-            <input ref={num} placeholder="number of parking" required />
-            <input type="file" ref={img} placeholder="image" />
-            <input ref={price} placeholder="parking price" required />
-            <input ref={services} placeholder="services" />
-
-            <button onClick={handleClickEvent}>Post</button>
-         
-      </div>
-      </CustomizedDialogs>
     </div>
   );
 }

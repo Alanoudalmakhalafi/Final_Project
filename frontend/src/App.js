@@ -7,6 +7,7 @@ import SignUp_LogIn from "./SignUp_LogIn/SignUp_LogIn";
 import Admin from "./userProfile/Admin";
 import AddParking from "./AddParking/AddParking";
 import AllParking from "./AllParking/AllParking"
+import * as Bootstrap from 'react-bootstrap';
 
 function App() {
   return (
