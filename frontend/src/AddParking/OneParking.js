@@ -9,6 +9,7 @@ import CustomizedDialogs from "./dialog";
 export default function OneParking({ get, parkings }) {
   const [editInput, setEditInput] = useState(true);
 
+
   //hooks for inputs
   const StreetName = useRef(null);
   const price = useRef(null);
@@ -129,10 +130,10 @@ axios.post(`http://localhost:3001/admin/addServices/${id}`,
                   <CustomizedDialogs>
                     <div className="inputBox">
 
-                      <input ref={nameOfservice} placeholder="nameOfservice" />
+                      <input ref={nameOfservice} placeholder="name Of service" />
                       <input ref={description} placeholder="description" />
                       <input ref={image} placeholder="image" />
-                      <input ref={servicePrice} placeholder="servicePrice" />
+                      <input ref={servicePrice} placeholder="service Price" />
 
 
                       <button onClick={()=>{addServices(get._id)}}>add service</button>

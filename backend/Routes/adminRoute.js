@@ -62,7 +62,9 @@ adminRouter.post("/addServices/:id", async (req, res) => {
       parking.services.push(newService) 
     try {
       await parking.save()
-      res.send(newService)
+      Parking.find({}).populate('services').then((allParking)=>{
+        res.send(allParking)
+      })
     } catch (error) {
       res.send(error)
     }
