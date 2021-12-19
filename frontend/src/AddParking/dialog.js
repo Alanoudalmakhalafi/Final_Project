@@ -61,7 +61,7 @@ export default function CustomizedDialogs({children}) {
 
   return (
     <div>
-      <Button variant="outlined" onClick={handleClickOpen} style={{ border: "none"}} >
+      <Button variant="outlined" onClick={handleClickOpen} style={{ border: "none", width:"1px"}} >
       <GrFormAdd/>
       </Button>
       <BootstrapDialog

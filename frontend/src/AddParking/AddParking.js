@@ -2,14 +2,12 @@ import React, { useRef, useState, useEffect } from "react";
 import axios from "axios";
 import Sidebar from "../userProfile/Sidebar";
 import "./AddParking.css";
-
 import CustomizedDialogs from "./dialog";
 import OneParking from "./OneParking";
 
 export default function AddParking() {
   const [NewParking, setNewParking] = useState([]);
   const [Loding, setLoding] = useState(true);
-
 
   //hooks for inputs
   const latitude = useRef(null);
@@ -19,6 +17,11 @@ export default function AddParking() {
   const img = useRef(null);
   const price = useRef(null);
   const services = useRef(null);
+
+  // const nameOfservice = useRef(null);
+  // const description = useRef(null);
+  // const image = useRef(null);
+  // const servicePrice = useRef(null);
 
   //geting all parkings
   useEffect(() => {
@@ -66,30 +69,28 @@ export default function AddParking() {
         <Sidebar />
         <div className="listOfParkingBox">
           <table>
-      <tr>
-      
+            <tr>
               <th>Street Name</th>
               <th>Price Of Parking</th>
-              <th>Services</th>
-              <button
-                className="rowsBtn"
-              >
-                
-                  <CustomizedDialogs>
-                    <div className="inputBox">
+              <th>Services </th>
+              <button className="rowsBtn">
+                <CustomizedDialogs>
+                  <div className="inputBox">
+                    <input
+                      ref={StreetName}
+                      placeholder="Street, City"
+                      required
+                    />
+                    <input ref={latitude} placeholder="latitude" required />
+                    <input ref={longitude} placeholder="longitude" required />
+                    <input ref={num} placeholder="number of parking" required />
+                    <input type="file" ref={img} placeholder="image" />
+                    <input ref={price} placeholder="parking price" required />
+                    <input ref={services} placeholder="services" />
 
-                      <input ref={StreetName} placeholder="Street, City" required/>
-                      <input ref={latitude} placeholder="latitude" required />
-                      <input ref={longitude} placeholder="longitude" required />
-                      <input ref={num} placeholder="number of parking" required />
-                      <input type="file" ref={img} placeholder="image" />
-                      <input ref={price} placeholder="parking price" required />
-                      <input ref={services} placeholder="services" />
-
-                      <button onClick={handleClickEvent}>Post</button>
-                    </div>
-                  </CustomizedDialogs>
-                
+                    <button onClick={handleClickEvent}>Post</button>
+                  </div>
+                </CustomizedDialogs>
               </button>
             </tr>
 
@@ -97,9 +98,7 @@ export default function AddParking() {
               return (
                 <>
                   <tr>
-                  <OneParking get={get} parkings={setNewParking}/>
-                 
-                   
+                    <OneParking get={get} parkings={setNewParking} />
                   </tr>
                 </>
               );

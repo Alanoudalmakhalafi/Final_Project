@@ -53,7 +53,6 @@ adminRouter.post("/addParking", async (req, res) => {
 adminRouter.post("/addServices/:id", async (req, res) => {
   Parking.findById(req.params.id).then((parking)=>{
     Service.create({
-
       nameOfservice: req.body.nameOfservice,
       description: req.body.description,
       image: req.body.image,
@@ -72,6 +71,8 @@ adminRouter.post("/addServices/:id", async (req, res) => {
 })
 
 adminRouter.put("/updateParking/:id", async (req, res) => {
+  console.log(req.body)
+  console.log(req.params.id)
   await Parking.findByIdAndUpdate(req.params.id,{
     $set: req.body,
   })

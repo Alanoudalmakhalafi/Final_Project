@@ -3,30 +3,27 @@ import React, { useRef, useState, useEffect } from "react";
 import { RiDeleteBin6Fill } from "react-icons/ri";
 import { AiOutlineEdit } from "react-icons/ai";
 import "./AddParking.css";
+import CustomizedDialogs from "./dialog";
+
 
 export default function OneParking({ get, parkings }) {
   const [editInput, setEditInput] = useState(true);
 
   //hooks for inputs
-//   const latitude = useRef(null);
-//   const longitude = useRef(null);
-//   const num = useRef(null);
-//   const img = useRef(null);
-const StreetName = useRef(null);
+  const StreetName = useRef(null);
   const price = useRef(null);
   const services = useRef(null);
-
+  const nameOfservice = useRef(null);
+  const description = useRef(null);
+  const image = useRef(null);
+  const servicePrice = useRef(null);
   //update Parking
   const updateParking = (id) => {
+
     axios
       .put(`http://localhost:3001/admin/updateParking/${id}`, {
-        // latitude: latitude.current.value,
-        // longitude: longitude.current.value,
-        // numberOfParking: num.current.value,
-        // image: img.current.value,
         StreetName: StreetName.current.value,
-        price: price.current.value,
-        services: services.current.value,
+        price: price.current.value
       })
       .then(
         (res) => {
@@ -39,13 +36,15 @@ const StreetName = useRef(null);
       );
   };
 
-  const EditInput = () => {
+  const nameOfTheFunctionHere = () => {
     if (editInput) {
-      setEditInput(false);
-    } else {
-      setEditInput(true);
-    }
-  };
+        setEditInput(false);
+      } else {
+        setEditInput(true);
+      }
+  }
+
+  
 
   //delete Parking
   const deleteParking = (id) => {
@@ -57,18 +56,44 @@ const StreetName = useRef(null);
       });
   };
 
+  //add service
+  const addServices = (id) =>{
+axios.post(`http://localhost:3001/admin/addServices/${id}`,
+{
+  nameOfservice: nameOfservice.current.value,
+      description: description.current.value,
+      image: image.current.value,
+      price: servicePrice.current.value,
+})
+.then(
+  (res) => {
+    console.log(res);
+    parkings(res.data);
+
+  },
+  (err) => {
+    console.log(err);
+  }
+)
+  }
+
   return (
     <>
       {editInput ? (
         <>
           <td>{get.StreetName}</td>
           <td>{get.price}</td>
-          <td>{get.services}</td>
+          <td>{get.services.map(name => {
+              return (
 
+              <li>{name.nameOfservice}</li>
+              )
+              } )}</td>
+         
           <button
             className="rowsBtn"
             onClick={() => {
-              EditInput();
+                nameOfTheFunctionHere();
             }}
           >
             <AiOutlineEdit />
@@ -91,6 +116,7 @@ const StreetName = useRef(null);
             <button
               onClick={() => {
                 updateParking(get._id);
+                nameOfTheFunctionHere()
               }}
             >
               save
@@ -98,6 +124,21 @@ const StreetName = useRef(null);
           </div>
         </>
       )}
+      <button className="rowsBtn">
+                 
+                  <CustomizedDialogs>
+                    <div className="inputBox">
+
+                      <input ref={nameOfservice} placeholder="nameOfservice" />
+                      <input ref={description} placeholder="description" />
+                      <input ref={image} placeholder="image" />
+                      <input ref={servicePrice} placeholder="servicePrice" />
+
+
+                      <button onClick={()=>{addServices(get._id)}}>add service</button>
+                    </div>
+                  </CustomizedDialogs>
+                </button>
     </>
   );
 }
