@@ -1,11 +1,11 @@
 import React, { useRef, useState, useEffect } from "react";
 import axios from "axios";
 import Sidebar from "../userProfile/Sidebar";
-import './AddParking.css'
+import "./AddParking.css";
 import { RiDeleteBin6Fill } from "react-icons/ri";
 import { AiOutlineEdit } from "react-icons/ai";
-
-
+import { GrFormAdd } from "react-icons/gr";
+import CustomizedDialogs from './dialog'
 
 export default function AddParking() {
   const [NewParking, setNewParking] = useState([]);
@@ -45,43 +45,45 @@ export default function AddParking() {
       .then(
         (res) => {
           console.log(res);
-          setNewParking(res.data)
+          setNewParking(res.data);
         },
         (err) => {
           console.log(err);
         }
-      )
-  }
+      );
+  };
 
   //update Parking
   const updateParking = (id) => {
-    axios.put(`http://localhost:3001/admin/updateParking/${id}`, {
-      latitude: latitude.current.value,
-      longitude: longitude.current.value,
-      StreetName: StreetName.current.value,
-      numberOfParking: num.current.value,
-      image: img.current.value,
-      price: price.current.value,
-      services: services.current.value,
-    })
-    .then(
-      (res) => {
-        console.log(res);
-      },
-      (err) => {
-        console.log(err);
-      }
-    )
-  }
+    axios
+      .put(`http://localhost:3001/admin/updateParking/${id}`, {
+        latitude: latitude.current.value,
+        longitude: longitude.current.value,
+        StreetName: StreetName.current.value,
+        numberOfParking: num.current.value,
+        image: img.current.value,
+        price: price.current.value,
+        services: services.current.value,
+      })
+      .then(
+        (res) => {
+          console.log(res);
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+  };
 
   //delete Parking
   const deleteParking = (id) => {
-    axios.delete(` http://localhost:3001/admin/deleteParking/${id}`)
-    .then((res)=>{
-      console.log(res.data)
-      setNewParking()
-    })
-  }
+    axios
+      .delete(` http://localhost:3001/admin/deleteParking/${id}`)
+      .then((res) => {
+        console.log(res.data);
+        setNewParking();
+      });
+  };
 
   //loding
   if (Loding) {
@@ -90,46 +92,69 @@ export default function AddParking() {
 
   return (
     <div className="addingPage">
-    <div className="test">
-      <Sidebar />
-      <div className="listOfParkingBox">
-              <table>
-                <tr>
-                  <th>Street Name</th>
-                  <th>Number Of Parking</th>
-                  <th>Price Of Parking</th>
-                </tr>
-          
-                  
-        {NewParking.map((get) => {
-          return (
-            <>
-                <tr>
-                  <td>{get.StreetName}</td>
-                  <td>{get.numberOfParking}</td>
-                  <td>{get.price}</td>
-                  <td>
-                  <button className="rowsBtn" onClick={()=>{updateParking(get._id)}}><AiOutlineEdit/></button>
-                  <button className="rowsBtn" onClick={()=>{deleteParking(get._id)}}><RiDeleteBin6Fill/></button>
-                  </td>
-                </tr>
-            </>
-          );
-        })}
-              </table>
-      </div>
-      </div>
-      <div className="inputBox">
-        <input ref={StreetName} placeholder="Street, City" required />
-        <input ref={latitude} placeholder="latitude" required />
-        <input ref={longitude} placeholder="longitude" required />
-        <input ref={num} placeholder="number of parking" required />
-        <input type="file" ref={img} placeholder="image" />
-        <input ref={price} placeholder="parking price" required />
-        <input ref={services} placeholder="services" />
+      <div className="test">
+        <Sidebar />
+        <div className="listOfParkingBox">
+          <table>
+            <tr>
+              <th>Street Name</th>
+              <th>Number Of Parking</th>
+              <th>Price Of Parking</th>
+              <button
+                className="rowsBtn"
+                data-toggle="modal"
+                data-target="#myModal"
+              >
+                <GrFormAdd />
+              </button>
+            </tr>
 
-        <button onClick={handleClickEvent}>Post</button>
+            {NewParking.map((get) => {
+              return (
+                <>
+                  <tr>
+                    <td>{get.StreetName}</td>
+                    <td>{get.numberOfParking}</td>
+                    <td>{get.price}</td>
+                    <td>
+                      <button
+                        className="rowsBtn"
+                        onClick={() => {
+                          updateParking(get._id);
+                        }}
+                      >
+                        <AiOutlineEdit />
+                      </button>
+                      <button
+                        className="rowsBtn"
+                        onClick={() => {
+                          deleteParking(get._id);
+                        }}
+                      >
+                        <RiDeleteBin6Fill />
+                      </button>
+                    </td>
+                  </tr>
+                </>
+              );
+            })}
+          </table>
+        </div>
       </div>
+      <CustomizedDialogs>
+          <div className="inputBox">
+            <input ref={StreetName} placeholder="Street, City" required />
+            <input ref={latitude} placeholder="latitude" required />
+            <input ref={longitude} placeholder="longitude" required />
+            <input ref={num} placeholder="number of parking" required />
+            <input type="file" ref={img} placeholder="image" />
+            <input ref={price} placeholder="parking price" required />
+            <input ref={services} placeholder="services" />
+
+            <button onClick={handleClickEvent}>Post</button>
+         
+      </div>
+      </CustomizedDialogs>
     </div>
   );
 }

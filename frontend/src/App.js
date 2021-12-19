@@ -12,7 +12,6 @@ function App() {
   return (
     <div>
       <NavBar />
-
       <Routes>
         <Route exact path="/" exact element={<Home />} />
         <Route path="/Signup&Login" element={<SignUp_LogIn />} />
