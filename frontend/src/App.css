@@ -45,3 +45,10 @@
   /* height: 100vh; */
 }
 
+.loding{
+  border: 2px solid red;
+  margin-left: 45%;
+  margin-right: 50%;
+  position: relative;
+
+}

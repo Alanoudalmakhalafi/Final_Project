@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import Sidebar from "./Sidebar";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
+import "./profile.css"
 
 export default function Profile() {
   const [isClicked, setIsClicked] = useState(true);
@@ -54,6 +55,7 @@ export default function Profile() {
 
   return (
     <>
+    <div className="profilePage">
       <Sidebar />
 
                 
@@ -62,33 +64,44 @@ export default function Profile() {
         if (TokenId !== undefined) {
           return(
             <>
+            <div className="Settings">
+            <h1>Profile Settings</h1>
             {isClicked ? (
               <>
-                <button onClick=
+              <div className="profileCard">
+                <div className="profileContent">
+                <label>Email</label>
+                <input value={Profile.email}></input>
+                <label>Phone</label>
+                <input value={Profile.phone}></input>
+                <label>Password</label>
+                <input type={Password}></input>
+
+                <button className="UpdateProfileBtn" onClick=
                 {showUpdateInput}>
-                  isClicked
+                  Update your profile
                 </button>
-                <h5>{Profile.email}</h5>
-                <h5>{Profile.phone}</h5>
-                <h5 type={Password}>{Profile.password}</h5>
+                </div>
+                </div>
               </>
             ) : (
              
               <>
+              <div  className="profileCard">
+              <div className="profileContent">
+
+              <label>Email</label>
                 <input ref={Email} placeholder="Email" required />
+                <label>Phone</label>
                 <input ref={Phone} placeholder="Phone number" />
+                <label>Password</label>
                 <input ref={Password} placeholder="Password" required />
 
-                <button
-                  onClick={(e) => {
-                    updatingProfile(e._id);
-                    showUpdateInput();
-                  }}
-                >
-                  save change
-                </button>
+                <button onClick={(e) => {updatingProfile(Profile._id); showUpdateInput(); }} > save change </button>
+                </div>
+                </div>
               </>
-            )}
+            )}</div>
             </>
           )
           
@@ -96,6 +109,8 @@ export default function Profile() {
           <h1>you have to Signup</h1>
         }
       })()}
+      </div>
     </>
   );
 }
+

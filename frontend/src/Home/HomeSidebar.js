@@ -4,6 +4,7 @@ import "react-pro-sidebar/dist/css/styles.css";
 import "react-calendar/dist/Calendar.css";
 import axios from "axios";
 import Calendar from "react-calendar";
+import {SpinningCircles} from 'react-loading-icons'
 
 export default function HomeSidebar() {
   const [parkings, setParkings] = useState();
@@ -18,17 +19,20 @@ export default function HomeSidebar() {
     });
   }, []);
 
+  
   //loding
   if (Loding) {
-    return <p>Loding</p>;
+    return <div className="loding"><SpinningCircles stroke="#D3AB63"  strokeOpacity={2} speed={.5} /></div>
+  
   }
-
   return (
     <div className="homeSidebar">
       <ProSidebar>
         <Menu iconShape="square">
           <MenuItem>
             <input className="searchBar" placeholder="Search" />
+           
+
           </MenuItem>
           <MenuItem>
             <Calendar
