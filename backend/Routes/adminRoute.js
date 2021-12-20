@@ -10,8 +10,8 @@ adminRouter.use(express.json())
 
 
 //ADMIN STUFF
-adminRouter.get("/admin", async (req, res) => {
-  const admin = await User.find()
+adminRouter.get("/:id", async (req, res) => {
+  const admin = await User.findById(req.params.id)
   res.send(admin)
 })
 
