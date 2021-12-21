@@ -71,7 +71,7 @@ export default function CustomizedDialogs({children}) {
       >
       
         <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
-          Add New Parking
+        
         </BootstrapDialogTitle>
         <DialogContent dividers>
           {children}

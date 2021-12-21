@@ -130,6 +130,7 @@ axios.post(`http://localhost:3001/admin/addServices/${id}`,
       <button className="rowsBtn">
                  
                   <CustomizedDialogs>
+                  
                     <div className="inputBox">
 
                       <input ref={nameOfservice} placeholder="name Of service" />

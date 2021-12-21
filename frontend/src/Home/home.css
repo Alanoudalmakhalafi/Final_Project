@@ -1,17 +1,19 @@
-.searchBar{
-    width: 200px;
-    box-shadow: none;
+.searchBar {
+  width: 200px;
+  box-shadow: none;
 }
 
-.clinic-map-container{
+/* .clinic-map-container{
 
+} */
+
+.homeSidebar {
+
+  position: absolute;
 }
 
-.homeSidebar{
-    position: absolute;
-}
-
-.pro-sidebar{
-    width: 400px;
-    margin: 10px;
+.pro-sidebar {
+    color: #F8F9FA;
+  width: 400px;
+  margin: 10px;
 }

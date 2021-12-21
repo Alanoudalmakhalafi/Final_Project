@@ -5,6 +5,7 @@ import "./AddParking.css";
 import CustomizedDialogs from "./dialog";
 import OneParking from "./OneParking";
 
+
 export default function AddParking() {
   const [NewParking, setNewParking] = useState([]);
   const [Loding, setLoding] = useState(true);
@@ -18,10 +19,6 @@ export default function AddParking() {
   const price = useRef(null);
   const services = useRef(null);
 
-  // const nameOfservice = useRef(null);
-  // const description = useRef(null);
-  // const image = useRef(null);
-  // const servicePrice = useRef(null);
 
   //geting all parkings
   useEffect(() => {
@@ -75,6 +72,7 @@ export default function AddParking() {
               <th>Services </th>
               <button className="rowsBtn">
                 <CustomizedDialogs>
+                
                   <div className="inputBox">
                     <input
                       ref={StreetName}
