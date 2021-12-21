@@ -36,3 +36,112 @@
 - Navbar
 - CustomizedDialogs
 - User
+
+# Server / Backend
+
+## Models
+
+bookingSchema
+
+```
+{
+   parking:{
+        type:Schema.Types.ObjectId,
+       ref:'Parking',
+    },
+    user:{
+        type:Schema.Types.ObjectId,
+        ref:'User',
+    },
+    startTime:{
+        type:Date,
+        default: KSAdate
+    },
+    endTime:{
+        type:Date,
+        
+    },
+    totalPrice:{
+        type:Number,
+    },
+    date:{
+        type:Date,
+        default: KSAdate
+    }
+}
+```
+
+parkingSchema
+
+```
+ {
+    latitude: {
+    type: Number,
+  },
+  longitude: {
+    type: Number,
+  },
+  StreetName: {
+    type: String,
+  },
+  numberOfParking: {
+    type: String,
+  },
+  image: {
+    type: String,
+  },
+  price: {
+    type: String,
+  },
+  services: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Service",
+    },
+  ],
+   
+ }
+```
+serviceSchema
+
+```
+{
+   nameOfservice:{
+        type:String
+    },
+    description:{
+        type:String
+    },
+    image:{
+        type: String
+    },
+    price:{
+        type:Number
+    }
+}
+```
+userSchema
+
+```
+{
+   phone:{
+        type:Number,
+    },
+    email:{
+        type: String,
+        required: [true, 'please enter email'],
+        unique: true,
+        lowercase: true,
+        validate: [isEmail, 'please enter valid email']
+    },
+    password:{
+        type: String,
+        required: [true, 'please enter  password'],
+        minlength: [6, 'minimum password length is 6 characters']
+    },
+    userType: {
+        type: String,
+        enum:['user','admin'],
+        default: 'user'
+    }  
+}

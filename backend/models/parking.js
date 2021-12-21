@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
-var Schema = mongoose.Schema
-
+var Schema = mongoose.Schema;
 
 const parkingSchema = new mongoose.Schema({
   latitude: {
@@ -9,8 +8,8 @@ const parkingSchema = new mongoose.Schema({
   longitude: {
     type: Number,
   },
-  StreetName:{
-    type: String
+  StreetName: {
+    type: String,
   },
   numberOfParking: {
     type: String,
@@ -18,13 +17,15 @@ const parkingSchema = new mongoose.Schema({
   image: {
     type: String,
   },
-  price:{
-    type:String,
+  price: {
+    type: String,
   },
-  services: [{
-    type: Schema.Types.ObjectId,
-    ref: 'Service'
-  }]
+  services: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Service",
+    },
+  ],
 });
 
 const Parking = mongoose.model("Parking", parkingSchema);
