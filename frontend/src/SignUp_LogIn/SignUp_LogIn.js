@@ -38,9 +38,10 @@ export default function SignUp_LogIn() {
             email:Email,
             password:Password
         })
-        .then((res) => {console.log(res)
+        .then((res) => {
+            console.log(res)
             if(res.data.errors){
-
+                console.log(res.data.errors)
             }if(res.data.user){
                 const token = res.data.token
                 const userSign = jwt(token)

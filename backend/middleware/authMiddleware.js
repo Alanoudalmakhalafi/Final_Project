@@ -1,9 +1,9 @@
 const jwt = require('jsonwebtoken')
-const User = require('../Models/User')
+const User = require('../models/user')
 
 const requireAuth = (req, res, next) => {
-    const token = req.cookies.jwt
-
+    console.log("token")
+    const token = req.locals.jwt
     if(token){
         jwt.verify(token,'alanoud secret',(err,decodedToken) => {
             if(err){

@@ -2,7 +2,6 @@ const express = require("express")
 const User = require("../models/user")
 const Parking = require("../models/parking")
 const Service = require("../models/Service")
-
 const adminRouter = express.Router()
 
 adminRouter.use(express.json())
@@ -10,9 +9,9 @@ adminRouter.use(express.json())
 
 
 //ADMIN STUFF
-adminRouter.get("/:id", async (req, res) => {
+adminRouter.get("/:id" ,async  (req, res) =>  {
   const admin = await User.findById(req.params.id)
-  res.send(admin)
+  res.send(admin) 
 })
 
 adminRouter.put("/updateAdmin/:id", async (req, res) => {

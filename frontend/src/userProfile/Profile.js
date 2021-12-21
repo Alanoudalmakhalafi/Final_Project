@@ -29,10 +29,12 @@ export default function Profile() {
   }; 
 
   useEffect(() => {
+    if(TokenId !== undefined){
     axios.get(`http://localhost:3001/admin/${TokenId}`).then((res) => {
       console.log(res.data);
       setProfile(res.data);
     });
+  }
   }, []); 
 
   const updatingProfile = (id) => {

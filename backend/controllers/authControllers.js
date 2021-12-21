@@ -66,7 +66,7 @@ module.exports.login_post = async (req, res) => {
    } 
    catch (error) {
      const errors = handleErrors(error)  
-     res.status(400).json({errors})  
+     res.status(200).json({errors})  
    }
 }
 
