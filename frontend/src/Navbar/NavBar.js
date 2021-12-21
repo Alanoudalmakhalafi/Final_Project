@@ -2,12 +2,19 @@ import React from "react";
 import img from "./parkingYards.png";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import { RiAdminFill } from "react-icons/ri";
-import { BiLogInCircle } from "react-icons/bi";
 import {useNavigate} from 'react-router-dom'
+import jwt_decode from "jwt-decode";
 
 
 export default function NavBar() {
   let navigate = useNavigate()
+
+  let decodedData
+  const storedToken = localStorage.getItem("token");
+  if (storedToken) {
+   decodedData = jwt_decode(storedToken, { payload: true });
+    console.log(decodedData);
+  }
 
   const logout = (e)=>{
     e.preventDefault()
@@ -29,8 +36,15 @@ export default function NavBar() {
             />
           </Navbar.Brand>
           <Nav>
-            <Nav.Link href="/Signup&Login">Login <BiLogInCircle/></Nav.Link>
-            <Nav.Link href="/logout"><a onClick={(e)=>logout(e)}>Logout</a></Nav.Link>
+          {decodedData ? (
+             <>
+             <Nav.Link href="/logout"><a onClick={(e)=>logout(e)}>Logout</a></Nav.Link>
+             </>) : null }
+     {!decodedData ? (
+         <>
+         <Nav.Link href="/Signup&Login">Login </Nav.Link>
+         </>
+     ) : null}
             <Nav.Link href="/AdminProfile"><RiAdminFill /></Nav.Link>
           </Nav>
         </Container>

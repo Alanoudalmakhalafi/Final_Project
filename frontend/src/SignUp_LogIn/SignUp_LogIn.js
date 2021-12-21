@@ -63,6 +63,7 @@ export default function SignUp_LogIn() {
             {/* SIGNUP */}
                  <div className='signupform'>
 
+                 <label>SIGNUP</label>
                 <input 
                 onChange={(e)=>{setEmail(e.target.value)}} 
                 type="text" 
@@ -80,6 +81,8 @@ export default function SignUp_LogIn() {
                 <div class="vl"></div>
             {/* LOGIN */}
                 <div className='loginform'>
+
+                <label>LOGIN</label>
                 <input 
                 onChange={(e)=>{setEmail(e.target.value)}} 
                 type="text" 

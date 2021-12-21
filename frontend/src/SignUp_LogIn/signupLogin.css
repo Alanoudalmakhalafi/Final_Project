@@ -1,56 +1,69 @@
-.registerform{
-    display: flex;
-    flex-direction: row;
-    justify-content:space-between;
-   /* border:black solid 2px; */
-    margin: 5%;
-    padding: 5%;
-    
+.registerform {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 5%;
+  padding: 5%;
 }
 
-input{
-    
-    width: 300px;
-    height: 40px;
-    margin: 5px;
-    margin-bottom: 9px;
-   border-radius: 20px;
-    padding:10px;
-    border:0;
-    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+input {
+  width: 300px;
+  height: 40px;
+  margin: 5px;
+  margin-bottom: 9px;
+  border-radius: 20px;
+  padding: 10px;
+  border: 0;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
 }
 
-button{
-    color:black;
-     border:none;
-    width: 100px;
-    /* margin-left: 100px; */
-    height: 30px;
-    border-radius: 5px;
+button {
+  color: black;
+  border: none;
+  width: 100px;
+  margin-left: 100px;
+  height: 30px;
+  border-radius: 5px;
 }
 
 .vl {
-    border-left: 3px solid #CFAB69;
-    height: 350px;
-    left: 50%;
-    margin-left: -3px;
-    
-  }
-
-/* .signupform{
-   border:black solid 5px;
+  border-left: 3px solid #cfab69;
+  height: 350px;
+  left: 50%;
+  margin-left: -3px;
 }
 
-.loginform{
-    border:black solid 5px;
- } */
+.signupform {
+  display: flex;
+  flex-direction: column;
+}
+.signupform label {
+  color: gray;
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
 
- .registerText{
-     text-align: center;
-     margin-top: 35px;
-     color:gray;
- }
+.loginform {
+  display: flex;
+  flex-direction: column;
+}
 
- span{
-     color:#fabf52;
- }
+.loginform label {
+    color: gray;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+.registerText {
+  text-align: center;
+  margin-top: 35px;
+  color: gray;
+}
+
+span {
+  color: #fabf52;
+}
