@@ -9,9 +9,10 @@ export default function SignUp_LogIn() {
     
     const [Email, setEmail] = useState()
     const [Password, setPassword] = useState()
+
     let navigate = useNavigate()
 
-    const signup= (e) => {
+    const signup = (e) => {
         e.preventDefault()
         axios
         .post('http://localhost:3001/signup',{
