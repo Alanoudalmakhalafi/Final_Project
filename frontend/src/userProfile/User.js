@@ -1,9 +1,12 @@
 import React, {useState, useEffect, useRef} from 'react'
 import axios from 'axios'
+import DateTimePicker from 'react-datetime-picker';
+
 
 export default function User() {
     
     const [UserParking, setUserParking] = useState([])
+    const [value, onChange] = useState(new Date());
 
     const parking = useRef(null)
     const user = useRef(null)
@@ -27,6 +30,7 @@ export default function User() {
 
     return (
         <>
+        <DateTimePicker onChange={onChange} value={value} />
             
         </>
     )

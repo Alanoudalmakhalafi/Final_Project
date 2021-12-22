@@ -8,6 +8,8 @@ import './home.css'
 
 export default function Home() {
   const [parkingLocation, setParkingLocation] = useState([]);
+  const [clickedParking, setClickedParking] = useState({})
+
   const [viewport, setViewport] = useState({
     width: "100vw",
     height: "91vh",
@@ -25,7 +27,7 @@ export default function Home() {
 
   return (
     <div>
-    <HomeSidebar/>
+    <HomeSidebar onePark={clickedParking}/>
       <div className="clinic-map-container">
         <ReactMapGL
           {...viewport}
@@ -34,13 +36,16 @@ export default function Home() {
             setViewport(viewport);
           }}
         >
-          {parkingLocation.map((e) => {
+          {parkingLocation.map((onePark) => {
             return (
               <Marker
-                longitude={e.longitude}
-                latitude={e.latitude}
+                longitude={onePark.longitude}
+                latitude={onePark.latitude}
                 offsetTop={-20}
                 offsetLeft={-10}
+                onClick={() => {
+                  setClickedParking(onePark)
+                }}
               >
                 <GrLocationPin />
               </Marker>

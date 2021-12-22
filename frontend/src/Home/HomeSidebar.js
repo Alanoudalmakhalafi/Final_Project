@@ -6,7 +6,7 @@ import axios from "axios";
 import Calendar from "react-calendar";
 import {Puff} from 'react-loading-icons'
 
-export default function HomeSidebar() {
+export default function HomeSidebar({onePark}) {
   const [parkings, setParkings] = useState();
   const [Loding, setLoding] = useState(true);
   const [value, onChange] = useState(new Date());
@@ -36,31 +36,24 @@ export default function HomeSidebar() {
            
 
           </MenuItem>
-          <MenuItem>
-            <Calendar
-              onChange={onChange}
-              value={value}
-              calendarType="Arabic"
-              locale="en-US"
-            />
-            <p className="text-center">
-              <span className="bold">Selected Date:</span>{" "}
-              {value.toDateString()}
-            </p>
-          </MenuItem>
-
-          {parkings.map((p) => {
-            return (
-              <SubMenu title={p.StreetName}>
+          { onePark.keys(obj).length !== 0 ?  <>
+          <MenuItem title={onePark.StreetName}>
                 <div className="">
-                  <img src={p.image} height="200px" width="200px" />
-                  <p>{p.StreetName}</p>
-                  <p>number Of Parking : {p.numberOfParking}</p>
-                  <p>price : {p.price}</p>
+                  <img src={onePark.image} height="200px" width="200px" />
+                  <p>{onePark.StreetName}</p>
+                  <p>number Of Parking : {onePark.numberOfParking}</p>
+                  <p>price : {onePark.price}</p>
                 </div>
-              </SubMenu>
-            );
-          })}
+              </MenuItem>
+          </>
+          :
+          <>
+            <h1>chos</h1>
+          </>
+      
+          }
+            
+           
         </Menu>
       </ProSidebar>
     </div>
