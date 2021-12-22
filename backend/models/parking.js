@@ -18,7 +18,7 @@ const parkingSchema = new mongoose.Schema({
     type: String,
   },
   price: {
-    type: String,
+    type: Number,
   },
   services: [
     {

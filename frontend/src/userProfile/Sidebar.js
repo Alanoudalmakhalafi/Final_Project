@@ -17,6 +17,11 @@ export default function Sidebar() {
           <MenuItem>
             <Link to="/AddNewParking">Add New Parking</Link>
           </MenuItem>
+
+          <MenuItem>
+            <Link to="/BookingList">Booking List</Link>
+          </MenuItem>
+
         </Menu>
       </ProSidebar>
     </div>

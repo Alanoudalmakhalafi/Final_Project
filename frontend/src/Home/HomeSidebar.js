@@ -28,7 +28,7 @@ export default function HomeSidebar({ onePark }) {
     axios.post(`http://localhost:3001/user/bookingParking`,
     {
       parking: onePark._id,
-      user: decodedData._id,
+      user: decodedData.id,
       startTime: Date.parse(value),            
     })
     .then(

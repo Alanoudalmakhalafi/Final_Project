@@ -34,7 +34,7 @@ userRouter.post("/userListOfParking", async (req,res)=>{
      let userId = req.body.id
      console.log(req.body.id);
      try{
-         const userParking = await booking.find({"user":userId})
+         const userParking = await booking.find({"user":userId}).populate('parking')
          .then((booking)=>{
 
              res.send(booking)
