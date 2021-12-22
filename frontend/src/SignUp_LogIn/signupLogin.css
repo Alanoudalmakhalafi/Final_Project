@@ -6,7 +6,7 @@
   padding: 5%;
 }
 
-input {
+/* input {
   width: 300px;
   height: 40px;
   margin: 5px;
@@ -15,7 +15,7 @@ input {
   padding: 10px;
   border: 0;
   box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
-}
+} */
 
 button {
   color: black;

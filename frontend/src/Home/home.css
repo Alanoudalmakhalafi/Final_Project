@@ -17,3 +17,10 @@
   width: 400px;
   margin: 10px;
 }
+
+/* .timePicker{
+} */
+.react-datetime-picker__wrapper{
+  width: auto;
+
+}

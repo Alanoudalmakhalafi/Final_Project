@@ -3,10 +3,10 @@ import { ProSidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
 import "react-pro-sidebar/dist/css/styles.css";
 import "react-calendar/dist/Calendar.css";
 import axios from "axios";
-import Calendar from "react-calendar";
-import {Puff} from 'react-loading-icons'
+import { Puff } from "react-loading-icons"
+import DateTimePicker from 'react-datetime-picker'
 
-export default function HomeSidebar({onePark}) {
+export default function HomeSidebar({ onePark }) {
   const [parkings, setParkings] = useState();
   const [Loding, setLoding] = useState(true);
   const [value, onChange] = useState(new Date());
@@ -19,13 +19,13 @@ export default function HomeSidebar({onePark}) {
     });
   }, []);
 
-  
   //loding
   if (Loding) {
-    return <div className="loding">
-    <Puff stroke="#D3AB63" strokeOpacity={.125} speed={.75} />
-    </div>
-  
+    return (
+      <div className="loding">
+        <Puff stroke="#D3AB63" strokeOpacity={0.125} speed={0.75} />
+      </div>
+    );
   }
   return (
     <div className="homeSidebar">
@@ -33,11 +33,11 @@ export default function HomeSidebar({onePark}) {
         <Menu iconShape="square">
           <MenuItem>
             <input className="searchBar" placeholder="Search" />
-           
-
           </MenuItem>
-          { onePark.keys(obj).length !== 0 ?  <>
-          <MenuItem title={onePark.StreetName}>
+          {Object.keys(onePark).length !== 0 ? (
+            <>
+              <MenuItem title={onePark.StreetName}>
+                 <div className="timePicker"><DateTimePicker onChange={onChange} value={value} /></div> 
                 <div className="">
                   <img src={onePark.image} height="200px" width="200px" />
                   <p>{onePark.StreetName}</p>
@@ -45,15 +45,12 @@ export default function HomeSidebar({onePark}) {
                   <p>price : {onePark.price}</p>
                 </div>
               </MenuItem>
-          </>
-          :
-          <>
-            <h1>chos</h1>
-          </>
-      
-          }
-            
-           
+            </>
+          ) : (
+            <>
+              <p style={{ color: "black" }}>choose parking</p>
+            </>
+          )}
         </Menu>
       </ProSidebar>
     </div>
