@@ -6,7 +6,6 @@ import Home from "./Home/Home";
 import SignUp_LogIn from "./SignUp_LogIn/SignUp_LogIn";
 import AddParking from "./AddParking/AddParking";
 import Profile from "./userProfile/Profile";
-import Footer from "./Footer/Footer";
 
 function App() {
   return (
@@ -18,7 +17,6 @@ function App() {
         <Route path="/AdminProfile" element={<Profile />} />
         <Route path="/AddNewParking" element={<AddParking />} />
       </Routes>
-      <Footer/>
     </div>
   );
 }
