@@ -56,7 +56,7 @@ module.exports.signup_post = async (req, res) => {
 }
 
 // LOGIN POST 
-module.exports.login_post = async (req, res) => {
+module.exports.login_post = async  (req, res) => {
     const { email, password,userType } = req.body
    try {
        const user = await User.login(email, password,userType) 

@@ -17,7 +17,6 @@ const bookingSchema = new mongoose.Schema({
     },
     startTime:{
         type:Date,
-        default: KSAdate
     },
     endTime:{
         type:Date,
