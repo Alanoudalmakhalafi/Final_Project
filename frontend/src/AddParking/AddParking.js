@@ -1,14 +1,16 @@
 import React, { useRef, useState, useEffect } from "react";
-import axios from "axios";
+import axios, { Axios } from "axios";
 import Sidebar from "../userProfile/Sidebar";
 import "./AddParking.css";
 import CustomizedDialogs from "./dialog";
 import OneParking from "./OneParking";
-
+import {Image} from 'cloudinary-react'
 
 export default function AddParking() {
   const [NewParking, setNewParking] = useState([]);
-  const [Loding, setLoding] = useState(true);
+  const [Loding, setLoding] = useState(true)
+  const [imgSelected, setImgSelected] = useState("")
+  const [Img, setImg] = useState()
 
   //hooks for inputs
   const latitude = useRef(null);
@@ -38,7 +40,7 @@ export default function AddParking() {
         longitude: longitude.current.value,
         StreetName: StreetName.current.value,
         numberOfParking: num.current.value,
-        image: img.current.value,
+        image: Img,
         price: price.current.value,
         services: services.current.value,
       })
@@ -53,7 +55,17 @@ export default function AddParking() {
       );
   };
 
-  
+  const uploadImage = async ()=>{
+    const formData = new FormData()
+    formData.append("file", imgSelected)
+    formData.append("upload_preset", "ay6fant5")
+
+    await axios.post("https://api.cloudinary.com/v1_1/parkingyardsimages/image/upload", formData)
+    .then((res)=>{
+      console.log(res.data.secure_url)
+       setImg(res.data.secure_url)
+    })
+  }
 
   //loding
   if (Loding) {
@@ -64,6 +76,7 @@ export default function AddParking() {
     <div className="addingPage">
       <div className="test">
         <Sidebar />
+        <Image height="200px" width="200px" cloudName="parkingyardsimages" publicId="https://res.cloudinary.com/parkingyardsimages/image/upload/v1640520106/m4ghoff7zxuutohq9h4i.jpg"/>
         <div className="listOfParkingBox">
           <table>
             <tr>
@@ -82,7 +95,10 @@ export default function AddParking() {
                     <input ref={latitude} placeholder="latitude" required />
                     <input ref={longitude} placeholder="longitude" required />
                     <input ref={num} placeholder="number of parking" required />
-                    <input ref={img} placeholder="image" />
+                    <input type="file" onChange={(event) => {
+                      setImgSelected(event.target.files[0])
+                    }} ref={img} placeholder="image" />
+                    <button onClick={uploadImage}>Upload</button>
                     <input ref={price} placeholder="parking price" required />
                     <input ref={services} placeholder="services" />
 
