@@ -18,7 +18,8 @@ input {
 }
 
 button {
-  color: black;
+  color: white;
+  background-color: black;
   border: none;
   width: 100px;
   margin-left: 100px;

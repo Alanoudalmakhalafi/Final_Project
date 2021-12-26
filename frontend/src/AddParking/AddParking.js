@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import axios, { Axios } from "axios";
+import axios from "axios";
 import Sidebar from "../userProfile/Sidebar";
 import "./AddParking.css";
 import CustomizedDialogs from "./dialog";
@@ -19,7 +19,7 @@ export default function AddParking() {
   const num = useRef(null);
   const img = useRef(null);
   const price = useRef(null);
-  const services = useRef(null);
+  // const services = useRef(null);
 
 
   //geting all parkings
@@ -42,7 +42,7 @@ export default function AddParking() {
         numberOfParking: num.current.value,
         image: Img,
         price: price.current.value,
-        services: services.current.value,
+        // services: services.current.value,
       })
       .then(
         (res) => {
@@ -76,7 +76,7 @@ export default function AddParking() {
     <div className="addingPage">
       <div className="test">
         <Sidebar />
-        <Image height="200px" width="200px" cloudName="parkingyardsimages" publicId="https://res.cloudinary.com/parkingyardsimages/image/upload/v1640520106/m4ghoff7zxuutohq9h4i.jpg"/>
+        
         <div className="listOfParkingBox">
           <table>
             <tr>
@@ -100,7 +100,6 @@ export default function AddParking() {
                     }} ref={img} placeholder="image" />
                     <button onClick={uploadImage}>Upload</button>
                     <input ref={price} placeholder="parking price" required />
-                    <input ref={services} placeholder="services" />
 
                     <button onClick={handleClickEvent}>Post</button>
                   </div>

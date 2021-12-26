@@ -1,6 +1,8 @@
 import React,{useEffect, useState} from 'react'
 import axios from 'axios';
 import jwt_decode from 'jwt-decode';
+import Sidebar from "../userProfile/Sidebar";
+import './bookingList.css'
 
 export default function BookingList() {
 
@@ -32,22 +34,34 @@ export default function BookingList() {
     }, [refresh])
     return (
         <>
+        <div className='bookingPage'>
+        <Sidebar />
         {ListOfBooking.map((e) =>{
             return(
                 <>
+                <div className='bookingList'>
+                <div className='bookingInfo'>
                     <p>{e.parking.StreetName}</p>
-                    <p>{e.parking.price}</p>
+                    <p>price per hour :</p>
+                    <p>{e.parking.price} SR</p>
+                    <p>start time :</p>
                     <p>{e.startTime}</p>
                     <button onClick={()=>checkOut(e._id)}>checkOut</button>
-
-                    <p>{e.totalPrice}</p>
+                    </div>
+                    <div className='checkoutInfo'>
+                    <p>total Price :</p>
+                    <p>{e.totalPrice} SR</p>
+                    <p>end time :</p>
                     <p>{e.endTime}</p>
+                    </div>
+                    </div>
+                    
                 </>
 
             )
         })}
 
-            
+            </div>
         </>
     )
 }
