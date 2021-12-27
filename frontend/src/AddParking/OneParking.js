@@ -92,22 +92,14 @@ axios.post(`http://localhost:3001/admin/addServices/${id}`,
               )
               } )}</td>
          
-          <button
-            className="rowsBtn"
-            onClick={() => {
+            <AiOutlineEdit className="icons" onClick={() => {
                 nameOfTheFunctionHere();
-            }}
-          >
-            <AiOutlineEdit />
-          </button>
-          <button
-            className="rowsBtn"
-            onClick={() => {
+            }} />
+          
+            <RiDeleteBin6Fill className="icons" onClick={() => {
               deleteParking(get._id);
-            }}
-          >
-            <RiDeleteBin6Fill />
-          </button>
+            }} />
+          
         </>
       ) : (
         <>

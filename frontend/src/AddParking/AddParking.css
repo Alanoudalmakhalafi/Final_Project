@@ -33,3 +33,9 @@ table {
   display: flex;
   flex-direction: row;
 }
+
+.icons{
+  width: 15px;
+  margin-left: 140px;
+  height: 15px;
+}
