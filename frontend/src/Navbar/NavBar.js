@@ -38,14 +38,14 @@ export default function NavBar() {
           <Nav>
           {decodedData ? (
              <>
-             <Nav.Link href="/logout"><a onClick={(e)=>logout(e)}>Logout</a></Nav.Link>
+             <Nav.Link href="/Signup&Login"><a onClick={(e)=>logout(e)}>Logout</a></Nav.Link>
              </>) : null }
      {!decodedData ? (
          <>
          <Nav.Link href="/Signup&Login">Login </Nav.Link>
          </>
      ) : null}
-            <Nav.Link href="/AdminProfile"><RiAdminFill /></Nav.Link>
+            <Nav.Link href="/Profile"><RiAdminFill /></Nav.Link>
           </Nav>
         </Container>
       </Navbar>

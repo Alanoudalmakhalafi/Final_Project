@@ -21,7 +21,7 @@
 | ---------------- | -------------------- | -------------------------- | ------------------------------------------------------------ |
 | `/`              | Home                 | public `<Route>`           | Home page, sidebar                                           |
 | `/Signup&Login`  | SignUp_LogIn         | public `<Route>`           | Login form, link to signup, navigate to homepage after login |
-| `/AdminProfile`  | Profile              | user only `<PrivateRoute>` | User information form and update button                      |
+| `/Profile`  | Profile              | user only `<PrivateRoute>` | User information form and update button                      |
 | `/AddNewParking` | AddParking           | user only `<PrivateRoute>` | Parking information form adding button                       |
 
 

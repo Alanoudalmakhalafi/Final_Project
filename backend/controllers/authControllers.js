@@ -40,11 +40,11 @@ const createToken = (id) => {
 
 // SIGN UP POST
 module.exports.signup_post = async (req, res) => {
-    const { email, password } = req.body
+    const { email, password ,userType} = req.body
     
     try {
-    const user = await User.create({email, password})
-    const token = createToken(user._id)
+    const user = await User.create({email, password,userType})
+    const token = createToken(user._id, user.email , user.userType)
     res.cookie('jwt',token,{httpOnly: true, maxAge:maxAge*1000})
      res.status(201).json({user:user,token:token})//
     } 
@@ -60,7 +60,7 @@ module.exports.login_post = async  (req, res) => {
     const { email, password,userType } = req.body
    try {
        const user = await User.login(email, password,userType) 
-       const token = createToken(user._id)
+       const token = createToken(user._id, user.email , user.userType)
        res.cookie('jwt',token,{httpOnly: true, maxAge:maxAge*1000}) 
        res.status(200).json({user:user,token:token})//
    } 
