@@ -6,23 +6,23 @@ import DateTimePicker from 'react-datetime-picker'
 import jwt_decode from "jwt-decode";
 import "react-pro-sidebar/dist/css/styles.css";
 import "react-calendar/dist/Calendar.css";
+import {useNavigate} from 'react-router-dom'
 
 
 export default function HomeSidebar({ onePark }) {
   const [parkings, setParkings] = useState();
-  // const [Loding, setLoding] = useState(true);
   const [value, onChange] = useState(new Date());
   const [UserParking, setUserParking] = useState([])
+  const startTime = useRef(null)
+  let navigate = useNavigate()
 
   let decodedData
   const storedToken = localStorage.getItem("token");
   if (storedToken) {
    decodedData = jwt_decode(storedToken, { payload: true });
-    // console.log(decodedData);
   }
-  // const [TokenId, setTokenId] = useState(decodedData.id)
 
-  
+
   const bookingParking = () => {
     console.log(Date.parse(value))
     axios.post(`http://localhost:3001/user/bookingParking`,
@@ -35,22 +35,12 @@ export default function HomeSidebar({ onePark }) {
       (res) => {
         console.log(res);
         setUserParking(res.data);
+        navigate('/BookingList')
       },
       (err) => {
         console.log(err);
       })}
-      const startTime = useRef(null)
 
-      
-
-
-  // useEffect(() => {
-  //   // axios.get(" http://localhost:3001/user/allParking").then((res) => {
-  //   //   console.log(res.data);
-  //   //   setParkings(res.data);
-  //     setLoding(false);
-  //   // });
-  // }, []);
 
   //loding
   // if (Loding) {

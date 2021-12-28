@@ -70,6 +70,7 @@ userRouter.put("/checkOut", async (req, res) => {
          
               await booking.findByIdAndUpdate(req.body.bookingId, {
                  totalPrice: total,
+                 IsChecked:true,
 
                }).then(async (UpdatedPrice)=>{
                  await UpdatedPrice.save().then((savedPrice)=>{
