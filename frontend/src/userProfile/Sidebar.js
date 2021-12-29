@@ -12,8 +12,7 @@ export default function Sidebar() {
   if (storedToken) {
     decodedData = jwt_decode(storedToken, { payload: true });
   }
-  const [TokenId, setTokenId] = useState(decodedData.id)
-console.log(decodedData.id)
+console.log(decodedData)
 
  
 

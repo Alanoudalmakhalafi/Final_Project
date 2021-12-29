@@ -52,8 +52,9 @@ userRouter.put("/checkOut", async (req, res) => {
         endTime: moment().utcOffset(0, true).format(),
       }).then(async (updatedEndTime)=>{
 
-           await updatedEndTime.save().then(async (savedEndTime)=>{
-             console.log(savedEndTime)
+           await updatedEndTime.save()
+           booking.findById({_id:req.body.bookingId}).then(async (savedEndTime)=>{
+             console.log("saved ", savedEndTime) 
 
              const parking = await Parking.findById(savedEndTime.parking)
          

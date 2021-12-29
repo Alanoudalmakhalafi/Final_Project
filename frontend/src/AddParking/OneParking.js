@@ -121,7 +121,7 @@ axios.post(`http://localhost:3001/admin/addServices/${id}`,
       
       <button className="rowsBtn">
                  
-                  <CustomizedDialogs>
+                  <CustomizedDialogs> 
                   
                     <div className="inputBox">
 

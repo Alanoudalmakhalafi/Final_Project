@@ -37,7 +37,7 @@ export default function BookingList() {
         {ListOfBooking.map((e) =>{
             return(
                 <>
-                <Checkout e={e}/>
+                <Checkout e={e} setRefresh={setRefresh}/>
               
                 </>
 

@@ -31,8 +31,8 @@ const handleErrors = (err) =>{
 
 const maxAge = 3*24*60*60
 //سوينا توكن
-const createToken = (id) => {
-    return jwt.sign({id},'alanoud secret',{
+const createToken = (id,userType) => {
+    return jwt.sign({id,userType},'alanoud secret',{
        expiresIn: maxAge
     })
 }
@@ -44,7 +44,7 @@ module.exports.signup_post = async (req, res) => {
     
     try {
     const user = await User.create({email, password,userType})
-    const token = createToken(user._id, user.email , user.userType)
+    const token = createToken(user._id, user.userType)
     res.cookie('jwt',token,{httpOnly: true, maxAge:maxAge*1000})
      res.status(201).json({user:user,token:token})//
     } 
@@ -60,7 +60,7 @@ module.exports.login_post = async  (req, res) => {
     const { email, password,userType } = req.body
    try {
        const user = await User.login(email, password,userType) 
-       const token = createToken(user._id, user.email , user.userType)
+       const token = createToken(user._id, user.userType)
        res.cookie('jwt',token,{httpOnly: true, maxAge:maxAge*1000}) 
        res.status(200).json({user:user,token:token})//
    } 

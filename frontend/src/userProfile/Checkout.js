@@ -1,5 +1,7 @@
 import React,{useEffect, useState} from 'react'
 import axios from 'axios';
+import './bookingList.css'
+
 
 
 export default function Checkout({ e , setRefresh}) {
@@ -35,7 +37,7 @@ export default function Checkout({ e , setRefresh}) {
                     <p>{e.startTime}</p>
                     {e.IsChecked ? "":
                     
-                    <button onClick={()=>{checkOut(e._id); showCheckoutBox()}}>Checkout</button>
+                    <button onClick={()=>{checkOut(e._id); setIsClicked(false)}}>Checkout</button>
                     }
                     </div>
                 </>) : (<>
