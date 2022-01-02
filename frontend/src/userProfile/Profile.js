@@ -73,7 +73,7 @@ export default function Profile() {
               <div className="profileCard">
                 <div className="profileContent">
                 <label>Email</label>
-                <input value={Profile.email}></input>
+                <input  value={Profile.email}></input>
                 <label>Phone</label>
                 <input value={Profile.phone}></input>
                 <label>Password</label>

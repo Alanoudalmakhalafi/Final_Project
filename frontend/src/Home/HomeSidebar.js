@@ -8,6 +8,7 @@ import "react-pro-sidebar/dist/css/styles.css";
 import "react-calendar/dist/Calendar.css";
 import { useNavigate } from "react-router-dom";
 import moment from "moment";
+import "./home.css"
 
 export default function HomeSidebar({ onePark }) {
   const [parkings, setParkings] = useState();
@@ -84,7 +85,7 @@ export default function HomeSidebar({ onePark }) {
                     locale="en-US"
                   />
                 </div>
-                <div className="">
+                <div className="parkingDetails">
                   <img src={onePark.image} height="200px" width="200px" />
                   <p>{onePark.StreetName}</p>
                   <p>number Of Parking : {onePark.numberOfParking}</p>
@@ -95,7 +96,7 @@ export default function HomeSidebar({ onePark }) {
             </>
           ) : (
             <>
-              <p style={{ color: "black" }}>choose parking</p>
+              <p className="text1">choose parking</p>
             </>
           )}
         </Menu>

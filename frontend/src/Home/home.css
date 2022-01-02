@@ -1,27 +1,41 @@
 .searchBar {
   width: 200px;
   box-shadow: none;
+  height: 40px;
+  border-radius: 20px;
+  padding: 10px;
+  border: 0;
 }
 
-/* .clinic-map-container{
-
-} */
-
 .homeSidebar {
-
   position: absolute;
 }
 
 .pro-sidebar {
-    color: #F8F9FA;
+  color: #f8f9fa;
   width: 400px;
   margin: 10px;
 }
 
-/* .timePicker{
-} */
-
-.react-datetime-picker__wrapper{
+.react-datetime-picker__wrapper {
   width: auto;
+}
+.text1 {
+  color: black;
+  margin-left: 55px;
+}
 
+.parkingDetails {
+  color: black;
+}
+
+.react-datetime-picker__wrapper {
+  border: 1px solid black;
+  border-radius: 20px;
+  width: 200px;
+  padding: 5px;
+  height: 40px;
+  background-color: white;
+  margin-left: 4px;
+  margin-bottom: 5px;
 }

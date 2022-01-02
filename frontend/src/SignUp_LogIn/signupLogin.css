@@ -6,17 +6,6 @@
   padding: 5%;
 }
 
-input {
-  width: 300px;
-  height: 40px;
-  margin: 5px;
-  margin-bottom: 9px;
-  border-radius: 20px;
-  padding: 10px;
-  border: 0;
-  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
-}
-
 button {
   color: white;
   background-color: black;
@@ -65,6 +54,16 @@ button {
   color: gray;
 }
 
-span {
+.text2 {
   color: #fabf52;
+}
+.logininputs{
+  width: 300px;
+  height: 40px;
+  margin: 5px;
+  margin-bottom: 9px;
+  border-radius: 20px;
+  padding: 10px;
+  border: 0;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
 }
