@@ -1,5 +1,5 @@
-import React, { useState} from "react";
-import { ProSidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
+import React from "react";
+import { ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
 import { RiAdminFill } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import jwt_decode from "jwt-decode";
@@ -25,8 +25,8 @@ console.log(decodedData)
           </MenuItem>
 
           {(function () {
-            if (decodedData != undefined) {
-              if (decodedData.userType == "admin") {
+            if (decodedData !== undefined) {
+              if (decodedData.userType === "admin") {
                 return (
                   <>
                     <MenuItem>

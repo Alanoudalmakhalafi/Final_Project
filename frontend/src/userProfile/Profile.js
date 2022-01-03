@@ -18,7 +18,7 @@ export default function Profile() {
    decodedData = jwt_decode(storedToken, { payload: true });
     console.log(decodedData);
   }
-  const [TokenId, setTokenId] = useState(decodedData.id)
+  const TokenId = decodedData.id
 
   const showUpdateInput = () => {
     if (isClicked) {

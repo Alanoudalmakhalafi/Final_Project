@@ -7,14 +7,22 @@ import './signupLogin.css'
 
 export default function SignUp_LogIn() {
     
-    const [Email, setEmail] = useState()
-    const [Password, setPassword] = useState()
-    const [signupErrors, setSignupErrors] = useState()
+    const [Email, setEmail] = useState("")
+    const [Password, setPassword] = useState("")
+    const [signupErrors, setSignupErrors] = useState({
+        email:"",
+        password:""
+    })
+    const [loginErrors, setLoginErrors] = useState({
+        email:"",
+        password:""
+    })
 
     let navigate = useNavigate()
 
     const signup = (e) => {
         e.preventDefault()
+
         axios
         .post('http://localhost:3001/signup',{
             email:Email,
@@ -23,6 +31,7 @@ export default function SignUp_LogIn() {
         .then((res) => {console.log(res)
             if(res.data.errors){ 
                 setSignupErrors(res.data.errors)
+                console.log(res.data.errors)
 
              }if(res.data.user){
                 const token = res.data.token
@@ -44,6 +53,7 @@ export default function SignUp_LogIn() {
         .then((res) => {
             console.log(res)
             if(res.data.errors){
+                setLoginErrors(res.data.errors)
                 console.log(res.data.errors)
             }if(res.data.user){
                 const token = res.data.token
@@ -74,10 +84,11 @@ export default function SignUp_LogIn() {
                 type="text" 
                 name="email" 
                 placeholder="Enter your email" required/><br/>
+{signupErrors.email == "" ? "" : 
                 <div className="alert alert-danger">
-                <strong>Danger!</strong>
+                <p>{signupErrors.email}</p>
                 </div>
-
+}
 
                 <input 
                 className='logininputs'
@@ -85,9 +96,11 @@ export default function SignUp_LogIn() {
                 type="password" 
                 name="password" 
                 placeholder="Password" required/><br/>
+{signupErrors.password == "" ? "" : 
                 <div className="alert alert-danger">
-                <strong>Danger!</strong>
+                <p>{signupErrors.password}</p>
                 </div>
+}
 
                 <button className="button-8" onClick={(e) => signup(e)}>Signup</button>
                 </div>
@@ -102,9 +115,11 @@ export default function SignUp_LogIn() {
                 type="text" 
                 name="email" 
                 placeholder="Enter your email" required/><br/>
+ {loginErrors.password == "" ? "" : 
                 <div className="alert alert-danger">
-                <strong>Danger!</strong>
+                <p>{loginErrors.password}</p>
                 </div>
+}
 
                 <input 
                 className='logininputs'
@@ -112,9 +127,11 @@ export default function SignUp_LogIn() {
                 type="password" 
                 name="password" 
                 placeholder="Password" required/><br/>
+{loginErrors.password == "" ? "" : 
                 <div className="alert alert-danger">
-                <strong>Danger!</strong>
+                <p>{loginErrors.password}</p>
                 </div>
+}
 
                 <button className="button-8" onClick={(e) => login(e)}>Login</button>
                 </div>

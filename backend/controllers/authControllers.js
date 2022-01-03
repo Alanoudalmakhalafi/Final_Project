@@ -8,6 +8,9 @@ const handleErrors = (err) =>{
     if(err.message === 'Email required'){
         errors.email = 'please enter your email'
     }
+    if(err.message === 'pls lowercase'){
+        errors.password = 'email should be lowercase'
+    }
 
     if(err.message === 'incorrect email'){
         errors.email ='email incorrect'
