@@ -26,7 +26,7 @@ export default function Profile() {
     } else {
       setIsClicked(true);
     }
-  }; 
+  }
 
   useEffect(() => {
     if(TokenId !== undefined){

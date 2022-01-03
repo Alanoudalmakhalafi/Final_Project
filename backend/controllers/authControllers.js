@@ -5,8 +5,12 @@ const handleErrors = (err) =>{
     console.log(err.message, err.code)
     let errors = {email:'', password:''}
 
+    if(err.message === 'Email required'){
+        errors.email = 'please enter your email'
+    }
+
     if(err.message === 'incorrect email'){
-        errors.email ='email not register'
+        errors.email ='email incorrect'
     }
 
     if(err.message === 'incorrect password'){
@@ -51,7 +55,7 @@ module.exports.signup_post = async (req, res) => {
     catch (err) {
         const errors = handleErrors(err)
         console.log(errors)
-        res.status(400).json({errors})
+        res.status(200).json({errors})
     }
 }
 

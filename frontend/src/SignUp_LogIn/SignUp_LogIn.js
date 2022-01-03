@@ -9,6 +9,7 @@ export default function SignUp_LogIn() {
     
     const [Email, setEmail] = useState()
     const [Password, setPassword] = useState()
+    const [signupErrors, setSignupErrors] = useState()
 
     let navigate = useNavigate()
 
@@ -21,6 +22,7 @@ export default function SignUp_LogIn() {
         })
         .then((res) => {console.log(res)
             if(res.data.errors){ 
+                setSignupErrors(res.data.errors)
 
              }if(res.data.user){
                 const token = res.data.token
@@ -72,14 +74,21 @@ export default function SignUp_LogIn() {
                 type="text" 
                 name="email" 
                 placeholder="Enter your email" required/><br/>
-                <div class="email error"></div>
+                <div className="alert alert-danger">
+                <strong>Danger!</strong>
+                </div>
+
+
                 <input 
                 className='logininputs'
                 onChange={(e)=>{setPassword(e.target.value)}} 
                 type="password" 
                 name="password" 
                 placeholder="Password" required/><br/>
-                <div class="password error"></div>
+                <div className="alert alert-danger">
+                <strong>Danger!</strong>
+                </div>
+
                 <button className="button-8" onClick={(e) => signup(e)}>Signup</button>
                 </div>
                 <div class="vl"></div>
@@ -93,7 +102,9 @@ export default function SignUp_LogIn() {
                 type="text" 
                 name="email" 
                 placeholder="Enter your email" required/><br/>
-                <div class="email error"></div>
+                <div className="alert alert-danger">
+                <strong>Danger!</strong>
+                </div>
 
                 <input 
                 className='logininputs'
@@ -101,7 +112,9 @@ export default function SignUp_LogIn() {
                 type="password" 
                 name="password" 
                 placeholder="Password" required/><br/>
-                <div class="password error"></div>
+                <div className="alert alert-danger">
+                <strong>Danger!</strong>
+                </div>
 
                 <button className="button-8" onClick={(e) => login(e)}>Login</button>
                 </div>
