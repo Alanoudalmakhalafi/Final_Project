@@ -3,6 +3,7 @@ const User = require("../models/user");
 const Parking = require("../models/parking");
 const booking = require("../models/booking");
 const moment = require('moment-timezone')
+const bcrypt = require('bcrypt')
 
 const userRouter = express.Router();
 
@@ -20,6 +21,23 @@ userRouter.put("/updateUser/:id", async (req, res) => {
   });
   res.send(updateUser);
 });
+userRouter.put("/updatePassword/:id", async (req, res) => {
+  let newPass = req.body.NewPassword
+  const user = await User.findById(req.params.id)
+  console.log(user)
+  const auth = await bcrypt.compare(req.body.password, user.password)
+  console.log(auth)
+  let salt = await bcrypt.genSalt()
+  console.log(user.password)
+  console.log(await bcrypt.hash(req.body.password, salt))
+  newPass = await bcrypt.hash(newPass, salt)
+
+  if(auth){
+    const after = await User.findByIdAndUpdate(req.params.id,{ password:req.body.NewPassword})
+    res.send(after);
+  }
+
+})
 userRouter.delete("/deleteUser/:id", async (req, res) => {
   const deleteUser = await User.findByAndRemove(req.params.id);
   res.send(deleteUser);

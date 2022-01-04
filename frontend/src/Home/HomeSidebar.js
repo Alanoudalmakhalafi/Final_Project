@@ -24,17 +24,7 @@ export default function HomeSidebar({ onePark }) {
   }
 
   const bookingParking = () => {
-    // const startDate = Date.parse(value);
-    // let f = new Intl.DateTimeFormat("utc", startDate);
-    // console.clear();
-
-    // // "29/12/2021"
-    // console.log(f.format());
-    // // console.log(startDate);
-    // //                                             2013-01-01T00:00:00.000
-    // console.log(moment(`${f.format()} 02:55`, "MM/DD/YYYY HH:mm").format("YYYY-MM-DDTHH:mm:ss.sssZ"));
-// 
-    // const dateWork=moment(`${f.format()} 02:55`, "MM/DD/YYYY HH:mm").format("YYYY-MM-DDTHH:mm:ss.sssZ")
+    
     console.log(value.setUTCHours(value.getUTCHours()+3));
     console.log(value);
     axios.post(`http://localhost:3001/user/bookingParking`,
