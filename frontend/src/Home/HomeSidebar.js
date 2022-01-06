@@ -76,11 +76,11 @@ export default function HomeSidebar({ onePark }) {
                   />
                 </div>
                 <div className="parkingDetails">
-                  <img src={onePark.image} height="200px" width="200px" />
+                  {/* <img src={onePark.image} height="200px" width="200px" /> */}
                   <p>{onePark.StreetName}</p>
                   <p>number Of Parking : {onePark.numberOfParking}</p>
                   <p>price : {onePark.price}</p>
-                  <button onClick={bookingParking}>book</button>
+                  <button className="parkingBTN" onClick={bookingParking}>book</button>
                 </div>
               </MenuItem>
             </>

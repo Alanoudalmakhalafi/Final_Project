@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const { isEmail } = require('validator')
 const bcrypt = require('bcrypt')
+const md5 = require("md5")
 
 const userSchema = new mongoose.Schema({
     phone:{
@@ -41,12 +42,13 @@ userSchema.post('save', function(doc,next){
 // })
 
 userSchema.statics.login = async function(email,password){//
+
   const user = await this.findOne({email})  
   if(email !==""){
 
       if(user){
-          const auth = await bcrypt.compare(password, user.password)
-          if(auth){
+          const md5Pass = await md5(password)
+          if(md5Pass === user.password){
               return user
             }
             throw Error('incorrect password')

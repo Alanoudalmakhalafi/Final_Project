@@ -4,7 +4,7 @@ const Parking = require("../models/parking");
 const booking = require("../models/booking");
 const moment = require('moment-timezone')
 const bcrypt = require('bcrypt')
-
+const md5 = require("md5") 
 const userRouter = express.Router();
 
 userRouter.use(express.json());
@@ -25,15 +25,16 @@ userRouter.put("/updatePassword/:id", async (req, res) => {
   let newPass = req.body.NewPassword
   const user = await User.findById(req.params.id)
   console.log(user)
-  const auth = await bcrypt.compare(req.body.password, user.password)
-  console.log(auth)
-  let salt = await bcrypt.genSalt()
-  console.log(user.password)
-  console.log(await bcrypt.hash(req.body.password, salt))
-  newPass = await bcrypt.hash(newPass, salt)
 
-  if(auth){
-    const after = await User.findByIdAndUpdate(req.params.id,{ password:req.body.NewPassword})
+  const auth = await md5(req.body.password)
+
+  console.log(auth)
+  console.log(user.password)
+
+
+  if(auth === user.password){
+    const after = await User.findByIdAndUpdate(req.params.id,{ password:md5(req.body.NewPassword)})
+    after.save()
     res.send(after);
   }
 

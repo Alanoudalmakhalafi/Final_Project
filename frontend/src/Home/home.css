@@ -27,6 +27,13 @@
 
 .parkingDetails {
   color: black;
+  margin-top: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-self: center;
+  /* border: 1px solid black; */
 }
 
 .react-datetime-picker__wrapper {
@@ -38,4 +45,7 @@
   background-color: white;
   margin-left: 4px;
   margin-bottom: 5px;
+}
+.parkingBTN{
+  margin-left: 70px;
 }

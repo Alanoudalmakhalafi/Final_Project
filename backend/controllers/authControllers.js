@@ -1,7 +1,7 @@
 const User = require('../models/user')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
-
+const md5 = require("md5")
 
 const handleErrors = (err) =>{
     console.log(err.message, err.code)
@@ -50,8 +50,8 @@ const createToken = (id,userType) => {
 // SIGN UP POST
 module.exports.signup_post = async (req, res) => {
     let { email, password ,userType} = req.body
-    let salt = await bcrypt.genSalt()
-    password = await bcrypt.hash(password, salt)
+   
+    password = await md5(password)
     
     try {
     const user = await User.create({email, password,userType})
