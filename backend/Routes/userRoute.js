@@ -21,24 +21,23 @@ userRouter.put("/updateUser/:id", async (req, res) => {
   });
   res.send(updateUser);
 });
+
 userRouter.put("/updatePassword/:id", async (req, res) => {
   let newPass = req.body.NewPassword
   const user = await User.findById(req.params.id)
   console.log(user)
-
   const auth = await md5(req.body.password)
-
   console.log(auth)
   console.log(user.password)
-
-
   if(auth === user.password){
-    const after = await User.findByIdAndUpdate(req.params.id,{ password:md5(req.body.NewPassword)})
+    const after = await User.findByIdAndUpdate(req.params.id,{
+       password:md5(req.body.NewPassword)})
     after.save()
     res.send(after);
   }
 
 })
+
 userRouter.delete("/deleteUser/:id", async (req, res) => {
   const deleteUser = await User.findByAndRemove(req.params.id);
   res.send(deleteUser);

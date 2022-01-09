@@ -11,6 +11,8 @@ export default function Profile() {
   const Email = useRef(null);
   const Phone = useRef(null);
   const Password = useRef(null);
+  const NewPassword = useRef(null);
+
 
   let decodedData
   const storedToken = localStorage.getItem("token");
@@ -42,7 +44,6 @@ export default function Profile() {
       .put(`http://localhost:3001/admin/updateAdmin/${id}`, {
         email: Email.current.value,
         phone: Phone.current.value,
-        password: Password.current.value,
       })
       .then(
         (res) => {
@@ -53,6 +54,25 @@ export default function Profile() {
           console.log(err);
         }
       )
+  }
+
+  const updatePassword = (id) => {
+    axios
+    .put(`http://localhost:3001/user/updatePassword/${id}`,{
+
+      password: Password.current.value,
+      NewPassword: NewPassword.current.value,
+
+    })
+    .then(
+      (res) => {
+        console.log(res.data);
+        setProfile(res.data);
+      },
+      (err) => {
+        console.log(err);
+      }
+    )
   }
 
   return (
@@ -72,12 +92,8 @@ export default function Profile() {
               <>
               <div className="profileCard">
                 <div className="profileContent">
-                <label>Email</label>
-                <input  value={Profile.email}></input>
-                <label>Phone</label>
-                <input value={Profile.phone}></input>
-                <label>Password</label>
-                <input type={Password}></input>
+                <input placeholder="Email"  value={Profile.email}></input>
+                <input placeholder="Phone"  value={Profile.phone}></input>
 
                 <button className="UpdateProfileBtn" onClick=
                 {showUpdateInput}>
@@ -92,14 +108,15 @@ export default function Profile() {
               <div  className="profileCard">
               <div className="profileContent">
 
-              <label>Email</label>
                 <input ref={Email} placeholder="Email" required />
-                <label>Phone</label>
-                <input ref={Phone} placeholder="Phone number" />
-                <label>Password</label>
-                <input ref={Password} placeholder="Password" required />
-
-                <button onClick={(e) => {updatingProfile(Profile._id); showUpdateInput(); }} > save change </button>
+                <input ref={Phone} placeholder="Phone number" required/>
+                <h5>password update</h5>
+                <input type="password" ref={Password} placeholder="current password" required />
+                
+                <input type="password" ref={NewPassword} placeholder="new password" required />
+                
+                <button onClick={(e) => {updatingProfile(Profile._id); showUpdateInput(); updatePassword(Profile._id) }} >
+                 save change </button>
                 </div>
                 </div>
               </>
