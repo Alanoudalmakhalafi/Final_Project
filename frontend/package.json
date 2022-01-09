@@ -31,6 +31,7 @@
     "react-pro-sidebar": "^0.7.1",
     "react-router-dom": "^6.1.1",
     "react-scripts": "4.0.3",
+    "react-stripe-checkout": "^2.6.3",
     "styled-components": "^5.3.3",
     "web-vitals": "^1.1.2"
   },
