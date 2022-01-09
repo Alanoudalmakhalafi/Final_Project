@@ -20,7 +20,8 @@ export default function Profile() {
    decodedData = jwt_decode(storedToken, { payload: true });
     console.log(decodedData);
   }
-  const TokenId = decodedData.id
+ 
+
 
   const showUpdateInput = () => {
     if (isClicked) {
@@ -31,8 +32,8 @@ export default function Profile() {
   }
 
   useEffect(() => {
-    if(TokenId !== undefined){
-    axios.get(`http://localhost:3001/admin/${TokenId}`).then((res) => {
+    if(decodedData !== undefined){
+    axios.get(`http://localhost:3001/admin/${decodedData.id}`).then((res) => {
       console.log(res.data);
       setProfile(res.data);
     });
@@ -83,7 +84,7 @@ export default function Profile() {
                 
       {(function () {
         
-        if (TokenId !== undefined) {
+        if (decodedData !== undefined) {
           return(
             <>
             <div className="Settings">
@@ -125,11 +126,13 @@ export default function Profile() {
           )
           
         }else{
-          <h1>you have to Signup</h1>
+          return(
+          <h1>you have to Signup</h1>)
         }
       })()}
       </div>
     </>
-  );
+  )
+
 }
 

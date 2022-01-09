@@ -115,7 +115,7 @@ export default function SignUp_LogIn() {
                 type="text" 
                 name="email" 
                 placeholder="Enter your email" required/><br/>
- {loginErrors.password == "" ? "" : 
+ {loginErrors.email == "" ? "" : 
                 <div className="alert alert-danger">
                 <p>{loginErrors.email}</p>
                 </div>
