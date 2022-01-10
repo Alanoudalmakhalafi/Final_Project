@@ -28,15 +28,15 @@
     height: 200px;
 }
 
-.bookingList{
-    /* border: 2px solid green; */
-    display: flex;
-    flex-wrap: wrap;
-   
+.bookingList{    
     gap: 5px;
     margin-top: 3%;
 }
 .bookingPage{
     display: flex;
 
+}
+.grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }

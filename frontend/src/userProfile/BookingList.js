@@ -34,16 +34,18 @@ export default function BookingList() {
         <>
         <div className='bookingPage'>
         <Sidebar />
+        <div className='grid'>
         {ListOfBooking.map((e) =>{
             return(
                 <>
+
                 <Checkout e={e} setRefresh={setRefresh}/>
               
                 </>
 
             )
         })}
-
+</div>
             </div>
         </>
     )

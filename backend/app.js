@@ -6,10 +6,7 @@ const authRoutes = require('./Routes/authRoute')
 const cors = require('cors')
 const stripe = require("stripe")(
   "sk_test_51KG1ymCh49zQHfRHdQKGKg994Hfan2sDrZqVUAKbsdq2YuRhVJBD5mWXPDMlth3oYaBrBpzRg3sw1EjIcsySc0s700zoEXKwEc"
-);
-
-
-
+)
 
 const app = express()
 
@@ -34,9 +31,6 @@ app.post("/payment", (req, res) => {
     }
   );
 });
-
-
-
 
 const uri = 'mongodb+srv://alanoud:1418@cluster0.anylu.mongodb.net/parkingSite?retryWrites=true&w=majority';
 mongoose.connect(uri, {
