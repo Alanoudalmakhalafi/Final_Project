@@ -60,9 +60,7 @@ export default function HomeSidebar({ onePark }) {
     <div className="homeSidebar">
       <ProSidebar>
         <Menu iconShape="square">
-          <MenuItem>
-            <input className="searchBar" placeholder="Search" />
-          </MenuItem>
+          
           {Object.keys(onePark).length !== 0 ? (
             <>
               <MenuItem title={onePark.StreetName}>
@@ -73,6 +71,8 @@ export default function HomeSidebar({ onePark }) {
                     value={value}
                     ref={startTime}
                     locale="en-US"
+                    calendarIcon= {null}
+                    clearIcon= {null}
                   />
                 </div>
                 <div className="parkingDetails">

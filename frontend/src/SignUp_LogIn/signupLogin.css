@@ -67,3 +67,17 @@ button {
   border: 0;
   box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
 }
+@media (max-width: 767px) {
+  .registerform {
+    display: flex;
+    flex-direction: column;
+  }
+  .vl {
+    height: 20px;
+    border-left: none;
+  }
+
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+}

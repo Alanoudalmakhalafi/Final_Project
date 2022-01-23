@@ -3,9 +3,12 @@ import ReactMapGL, { Marker } from "react-map-gl";
 import { GrLocationPin } from "react-icons/gr";
 import axios from "axios";
 import HomeSidebar from "./HomeSidebar";
+import { FaCar } from "react-icons/fa";
 import './home.css'
 
 export default function Home() {
+  const [userLat, setUserLat] = useState(0);
+  const [userLon, setUserLon] = useState(0);
   const [parkingLocation, setParkingLocation] = useState([]);
   const [clickedParking, setClickedParking] = useState({})
 
@@ -16,6 +19,18 @@ export default function Home() {
     longitude: 46.7132,
     zoom: 10,
   });
+
+  useEffect(() => {
+    //   BUILT IN COMPONENT IN JAVASCRIPT THAT GETS THE CURRENT LOCATION OF THE DEVICE IF THE USER ALLOWS IT
+    navigator.geolocation.getCurrentPosition(showPosition);
+
+    function showPosition(position) {
+      // console.log("hello", position.coords.latitude);
+      setUserLat(position.coords.latitude);
+      // console.log("hello", position.coords.longitude);
+      setUserLon(position.coords.longitude);
+    }
+  }, []);
 
   useEffect(() => {
     axios.get(" http://localhost:3001/user/allParking").then((res) => {
@@ -35,6 +50,14 @@ export default function Home() {
             setViewport(viewport);
           }}
         >
+         <Marker
+            longitude={userLon}
+            latitude={userLat}
+            offsetTop={-20}
+            offsetLeft={-10}
+          >
+            <FaCar />
+          </Marker>
           {parkingLocation.map((onePark) => {
             return (
               <Marker
