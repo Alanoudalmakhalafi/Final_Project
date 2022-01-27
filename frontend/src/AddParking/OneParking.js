@@ -104,9 +104,9 @@ axios.post(`http://localhost:3001/admin/addServices/${id}`,
       ) : (
         <>
           <div className="editInput">
-            <input ref={StreetName} placeholder="Street, City" required />
-            <input ref={price} placeholder="parking price" required />
-            <input ref={services} placeholder="services" />
+            <input className="nnn" ref={StreetName} placeholder="Street, City" required />
+            <input className="nnn" ref={price} placeholder="parking price" required />
+            {/* <input ref={services} placeholder="services" /> */}
             <button
               onClick={() => {
                 updateParking(get._id);
@@ -125,10 +125,10 @@ axios.post(`http://localhost:3001/admin/addServices/${id}`,
                   
                     <div className="inputBox">
 
-                      <input ref={nameOfservice} placeholder="name Of service" />
-                      <input ref={description} placeholder="description" />
-                      <input ref={image} placeholder="image" />
-                      <input ref={servicePrice} placeholder="service Price" />
+                      <input className="nnn" ref={nameOfservice} placeholder="name Of service" />
+                      <input className="nnn" ref={description} placeholder="description" />
+                      <input className="nnn" ref={image} placeholder="image" />
+                      <input className="nnn" ref={servicePrice} placeholder="service Price" />
 
 
                       <button onClick={()=>{addServices(get._id)}}>add service</button>

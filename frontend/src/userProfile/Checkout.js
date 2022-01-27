@@ -15,22 +15,7 @@ export default function Checkout({ e, setRefresh }) {
         console.log(res.data);
         setRefresh(true);
 
-      //   axios
-      //     .post("/orders/create", { userId: decodedData.id })
-
-      //     .then(async (res) => {
-      //       try {
-      //         const res = await axios.post("/payment", {
-      //           tokenId: token.id,
-      //           amount: total * 3.75 * 100,
-      //         });
-      //       } catch (error) {}
-
-      //       console.log(res);
-      //     })
-      //     .catch(function (error) {
-      //       console.log(error);
-      //     });
+  
        });
   };
 
@@ -44,16 +29,19 @@ export default function Checkout({ e, setRefresh }) {
   return (
     <>
       <div className="bookingList">
-        {isClicked ? (
+        {e.endTime == undefined ? (
           <>
             <div className="bookingInfo">
               <p>{e.parking.StreetName}</p>
               <p>price per hour :</p>
               <p>{e.parking.price} SR</p>
               <p>start time :</p>
-              <p>{e.startTime}</p>
+              <p>{e.startTime.split("T")[0]}</p>
+              <p>{e.startTime.split("T")[1].split(":").slice(0, 2).join(":")}
+              </p>
 
-              {e.IsChecked ? (
+
+              {e.endTime ? (
                 ""
               ) : (
                 <>
@@ -69,7 +57,9 @@ export default function Checkout({ e, setRefresh }) {
               <p>total Price :</p>
               <p>{e.totalPrice} SR</p>
               <p>end time :</p>
-              <p>{e.endTime}</p>
+              <p>{e.endTime.split("T")[0]}</p>
+              <p>{e.endTime.split("T")[1].split(":").slice(0, 2).join(":")} </p>
+
             </div>
           </>
         )}

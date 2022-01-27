@@ -88,21 +88,22 @@ export default function AddParking() {
                 
                   <div className="inputBox">
                     <input
+                    className="nnn"
                       ref={StreetName}
                       placeholder="Street, City"
                       required
                     />
-                    <input ref={latitude} placeholder="latitude" required />
-                    <input ref={longitude} placeholder="longitude" required />
-                    <input ref={num} placeholder="number of parking" required />
+                    <input className="nnn" ref={latitude} placeholder="latitude" required />
+                    <input className="nnn" ref={longitude} placeholder="longitude" required />
+                    <input className="nnn" ref={num} placeholder="number of parking" required />
                     
-                    <input type="file" onChange={(event) => {
+                    <input className="nnn" type="file" onChange={(event) => {
                       setImgSelected(event.target.files[0])
                     }} ref={img} placeholder="image" />
 
                     <button onClick={uploadImage}>Upload</button>
 
-                    <input ref={price} placeholder="parking price" required />
+                    <input className="nnn" ref={price} placeholder="parking price" required />
 
                     <button onClick={handleClickEvent}>Post</button>
                   </div>
